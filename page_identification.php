@@ -42,7 +42,7 @@ function closeNav() {
 		<a href="panier.html">
 			<img  src="icons/herz_icon.png" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 		</a>
-		<a href="identification.php">
+		<a href="page_identification.php">
 			<img  src="icons/compte_icon.png" alt="compte icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
 		</a>
 	</header>
@@ -54,7 +54,7 @@ function closeNav() {
 		
 	<main>	
 		<?php
-			include 'identification.php';
+			include 'creation_compte.php';
 			if(isset($_POST['submit'])){
 				if ($ChampsIncorrects !='') {
 					echo ' <br /> Merci de remplir correctement les champs ci-dessous :
