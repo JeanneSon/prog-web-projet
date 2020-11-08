@@ -4,7 +4,7 @@ include 'verification_identification.php'
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Gestion Cocktails</title>
+	<title>Page d'identifications</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="styleNav.css">
 	</head>
@@ -24,7 +24,6 @@ function closeNav() {
 }
 
 </script>
-
 <div id="mySidenav" class="sidenav">
 	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	  <a href="panier.html">Cocktails préférés</a>
@@ -46,28 +45,31 @@ function closeNav() {
 		<a href="identification.php">
 			<img  src="icons/compte_icon.png" alt="compte icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
 		</a>
-</header>
+	</header>
 
-<div>
+	<!-- Use any element to open the sidenav -->
+	<div>
 	<span onclick="openNav()"><img src="icons/menu.jpg" alt="icon"></span>
-</div>
+	</div>
+		
+	<main>	
+		<?php
+			include 'identification.php';
+			if(isset($_POST['submit'])){
+				if ($ChampsIncorrects !='') {
+					echo ' <br /> Merci de remplir correctement les champs ci-dessous :
+					<ul> 
+						'.$ChampsIncorrects.'
+					</ul>';
+				}
+			}
+		?>
+	</main>
 
-<main>
-<?php
-	include 'identification.php';
-	if(isset($_POST['submit'])){
-		if ($ChampsIncorrects !='') {
-			echo ' <br /> Merci de remplir correctement les champs ci-dessous :
-			<ul> 
-				'.$ChampsIncorrects.'
-			</ul>';
-		}
-	}
-?>	
-
-<footer>
-	@Ma boutique
-</footer>
-
+	<footer>
+		<a href="impressum.html">Impressum</a>
+		<a href="contact.html">Contact</a>
+	</footer>
+		</div>
 </body>
 </html>
