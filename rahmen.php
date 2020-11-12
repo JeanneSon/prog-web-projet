@@ -56,8 +56,16 @@ function closeNav() {
 	</main>
 
 	<footer>
-		<a href="impressum.html">Impressum</a>
-		<a href="contact.html">Contact</a>
+		<p  style="margin:0;display:inline;float:left"><u>Impressum</u><br />
+			Projet L3 ISFATES <br />
+			Programmation web <br />
+			Emmanuel Nauer
+		</p>
+		<p  style="margin:0;margin-left: 20px;display:inline;float:left"><u>Contact</u><br/>
+			michelle.mielke7@etu.univ-lorraine.fr <br />
+			hanna.schall8@etu.univ-lorraine.fr<br />
+			aurianne.venet@etu.univ-lorraine.fr
+		</p>
 	</footer>
 		</div>
 </body>
