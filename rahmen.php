@@ -23,7 +23,7 @@ function closeNav() {
 </script>
 <div id="mySidenav" class="sidenav">
 	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	  <a href="panier.html">Cocktails préférés</a>
+	  <a href="panier.php">Cocktails préférés</a>
 	  <a href="contact.html">Contact</a>
 	  <form>
 			<select id="cars" name="cars">
@@ -64,7 +64,7 @@ function closeNav() {
 		<p  style="margin:0;margin-left: 20px;display:inline;float:left"><u>Contact</u><br/>
 			michelle.mielke7@etu.univ-lorraine.fr <br />
 			hanna.schall8@etu.univ-lorraine.fr<br />
-			aurianne.venet@etu.univ-lorraine.fr
+			aurianne.venet9@etu.univ-lorraine.fr
 		</p>
 	</footer>
 		</div>
