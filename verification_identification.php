@@ -18,72 +18,76 @@ if(isset($_POST['submit']))
 
     if(  (!isset($_POST['login']))||(strlen(trim($_POST['login']))<2))
 	  { $ChampsIncorrects = $ChampsIncorrects.'Login, ' ;
-	    $ClassNom='error';
+	    $ClassLogin='error';
 	  }
 
 	if(  (!isset($_POST['mdp']))||(strlen(trim($_POST['mdp']))<2))
 	  { $ChampsIncorrects = $ChampsIncorrects.'Mot de passe, ' ;
-	    $ClassNom='error';
+	    $ClassMdp='error';
 	  }
 
-	if(  (!isset($_POST['nom']))||(strlen(trim($_POST['nom']))<2))
-	  { $ChampsIncorrects = $ChampsIncorrects.'Nom, ' ;
-	    $ClassNom='error';
+	if(   (!isset($_POST['nom']))||(strlen(trim($_POST['nom']))<2))
+	  { if (trim($_POST['nom'])!='') {
+	  	$ChampsIncorrects = $ChampsIncorrects.'Nom, ' ;
+	    $ClassNom ='error';
 	  }
+	}
 
-    if(!isset($_POST['prenom'])||(strlen(trim($_POST['nom']))<2))
-	  { $ChampsIncorrects = $ChampsIncorrects.'Prénom, ';
-		$ClassPrenom='error';
-	  }
-	else
-	  { $Prenom=strtolower(trim($_POST['prenom']));
-		if(!ctype_alpha($Prenom))
-		  { $ChampsIncorrects=$ChampsIncorrects.'Prénom, ';
+    if(!isset($_POST['prenom'])||(strlen(trim($_POST['prenom']))<2))
+    	{ if (trim($_POST['prenom'])!='') {
+			$ChampsIncorrects = $ChampsIncorrects.'Prénom, ';
 			$ClassPrenom='error';
-		  }								
 	  }
+	}
 
-	if(  (!isset($_POST['sexe']))||((trim($_POST['sexe'])!='f')&&(trim($_POST['sexe'])!='h')))
-      { $ChampsIncorrects=$ChampsIncorrects.'Sexe, ';
-	    $ClassSexe='error';
+	if((isset($_POST['sexe'])) && ((trim($_POST['sexe'])!='f')&&(trim($_POST['sexe'])!='h')))
+      	{ $ChampsIncorrects=$ChampsIncorrects.'Sexe, ';
+	    	$ClassSexe='error';
 	  }
 
 	if(  (!isset($_POST['naissance']))||(trim($_POST['naissance'])==''))
-	  { $ChampsIncorrects=$ChampsIncorrects.'Date de naissance, ';
-	    $ClassNaissance='error';
-	  }
-	else
-	  { list($Annee,$Mois,$Jour)=explode('-',$_POST['naissance']);
-		if(!checkdate($Mois,$Jour,$Annee)) 
-		  { $ChampsIncorrects=$ChampsIncorrects.'Date de naissance, ';
+		{ $ChampsIncorrects=$ChampsIncorrects.'Date de naissance, ';
+			$ClassNaissance='error';
+	} else if (isset($_POST['naissance']))
+	  	{ list($Annee,$Mois,$Jour)=explode('-',$_POST['naissance']);
+			if(!checkdate($Mois,$Jour,$Annee)) 
+		  	{ $ChampsIncorrects=$ChampsIncorrects.'Date de naissance, ';
 			$ClassNaissance='error';
 		  }
 	  }
-
-	if(  (!isset($_POST['email']) || (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))))
-	  { $ChampsIncorrects=$ChampsIncorrects.'Adresse électronique, ';
+		if(  (!isset($_POST['email']) || (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))))
+		{ if (trim($_POST['email'])!='') {
+	  	$ChampsIncorrects=$ChampsIncorrects.'Adresse électronique, ';
 	    $ClassEmail='error';
 	  }
+	}
 
-	if((!isset($_POST['telephone']))||
-	(!preg_match("#([0-9]{2}){5}#",$_POST['telephone'])))
-		{ $ChampsIncorrects = $ChampsIncorrects.'Numéro de telephone, ' ;
+	if((!isset($_POST['telephone'])) || (!preg_match("#([0-9]{2}){5}#",$_POST['telephone'])))
+		{ if (trim($_POST['telephone'])!='') {
+		$ChampsIncorrects = $ChampsIncorrects.'Numéro de telephone, ' ;
 	    $ClassTelephone='error';
 	  }
+	}
 
 	if(  (!isset($_POST['rue']))||(strlen(trim($_POST['rue']))<2))
-	  { $ChampsIncorrects=$ChampsIncorrects.'Rue, ';
+		{ if (trim($_POST['rue'])!='') {
+	  	$ChampsIncorrects=$ChampsIncorrects.'Rue, ';
 	    $ClassRue='error';
 	  }
+	}
 
 	  if(  (!isset($_POST['codePostal']))||(strlen(trim($_POST['codePostal']))<5))
-	  { $ChampsIncorrects=$ChampsIncorrects.'CodePostal, ';
+	  	{ if (trim($_POST['codePostal'])!='') {
+	  	$ChampsIncorrects=$ChampsIncorrects.'CodePostal, ';
 	    $ClassCodePostal='error';
-	  }	
+	  	}	
+	}
 
 	  if(  (!isset($_POST['ville']))||(strlen(trim($_POST['ville']))<2))
-	  { $ChampsIncorrects=$ChampsIncorrects.'Ville';
+	  	{ if (trim($_POST['ville'])!='') {
+	  	$ChampsIncorrects=$ChampsIncorrects.'Ville';
 	    $ClassVille='error';
-	  }
+	  	}
+	}
   }
 ?>
