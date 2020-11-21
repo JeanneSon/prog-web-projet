@@ -46,15 +46,14 @@ if(isset($_POST['submit']))
 	  }
 
 	if(  (!isset($_POST['naissance']))||(trim($_POST['naissance'])==''))
-		{ $ChampsIncorrects=$ChampsIncorrects.'Date de naissance, ';
-			$ClassNaissance='error';
+		{ $ClassNaissance='ok';
 	} else if (isset($_POST['naissance']))
 	  	{ list($Annee,$Mois,$Jour)=explode('-',$_POST['naissance']);
 			if(!checkdate($Mois,$Jour,$Annee)) 
 		  	{ $ChampsIncorrects=$ChampsIncorrects.'Date de naissance, ';
 			$ClassNaissance='error';
 		  }
-	  }
+	 }
 		if(  (!isset($_POST['email']) || (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))))
 		{ if (trim($_POST['email'])!='') {
 	  	$ChampsIncorrects=$ChampsIncorrects.'Adresse électronique, ';
