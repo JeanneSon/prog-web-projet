@@ -10,8 +10,19 @@
     <title><?php echo $recette["titre"];?></title>
 
     <script>
+
         function preferer() {
-            alert("ajouter cette recette à mes recettes préférées - IMPLEMENT!!");
+            console.log(document.getElementById("coeur_icon").src);
+            if (document.getElementById("coeur_icon").src.endsWith("icons/herz_icon.png")) {
+                document.getElementById("coeur_icon").src = "icons/coeur_rouge_icon.png";
+                document.getElementById("coeur_icon").title = "enlever cette recette de mes recettes préférées";
+                alert("ajouter cette recette à mes recettes préférées - IMPLEMENT!!");
+            }
+            else {
+                document.getElementById("coeur_icon").src = "icons/herz_icon.png";
+                document.getElementById("coeur_icon").title = "ajouter cette recette à mes recettes préférées";
+                alert("enlever cette recette à mes recettes préférées - IMPLEMENT!!");
+            }
         }
     </script>
 </head>
