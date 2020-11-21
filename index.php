@@ -43,6 +43,7 @@ function closeNav() {
 		<a href="page_identification.php">
 			<img  src="icons/compte_icon.png" alt="compte icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
 		</a>
+
 	</header>
 
 	
@@ -53,10 +54,11 @@ function closeNav() {
 	</div>
 		
 	<main>	
-		hallo
+		<?php include 'dropdown.php';?>
 	</main>
 
 	<footer>
+		<hr />
 		<p  style="margin:0;display:inline;float:left"><u>Impressum</u><br />
 			Projet L3 ISFATES <br />
 			Programmation web <br />
