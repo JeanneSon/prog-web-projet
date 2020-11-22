@@ -5,17 +5,17 @@
 <title>Dynamically Generate Select Dropdowns</title>
 </head>
 <body>
-    <?php $categories = file_get_contents('Donnees.inc.php', 1468); // 1468er Charakter
-    echo $categories;
+    <?php include 'Donnees.inc.php';
     ?>
 <form>
   <select>
         <option selected="selected">Choose one</option>
         <?php
-        
-        // Iterating through the product array
-        foreach($categories.$Hierarchie as $item){
-            echo "<option value='strtolower($item)'>$item</option>";
+        foreach($Hierarchie as $h => $g){
+            foreach($g as $item => $value){
+                foreach($value as $i => $v){
+                    echo "<option value='strtolower($v)'>$item</option>";}
+            }
         }
         ?>
     </select>
