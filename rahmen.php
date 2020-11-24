@@ -4,6 +4,47 @@
 	<title>Projekt Header, footer, nav</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="styleNav.css">
+	<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <!-- Javascript -->
+      <script>
+         $(function() {
+            var availableTutorials  =  [
+               	'Malibu',
+      			'Cerise',
+      			'Jus de goyave',
+      			'Cerise griotte',
+      			'Aperol',
+      			'Prosecco',
+      			'Glaçon',
+      			'Orange sanguine',
+      			'Eau gazeuse',
+      			'Curaçao',
+      			'Rhum blanc',
+      			'Tequila',
+      			'Martini',
+      			'Sirop de sucre de canne',
+      			'Stout (bière)',
+      			'Champagne',
+      			'Vodka',
+      			'Jus de tomates',
+      			'Jus de citron',
+      			'Sauce worcestershire',
+      			'Sauce tabasco',
+      			'Sel de céleri',
+      			'Poivre',
+            ];
+            $( "#automplete-1" ).autocomplete({
+              	source: availableTutorials,
+              	minLength: 1,
+              	delay:500,
+              	autoFocus:true
+            });
+         });
+      </script>
 	</head>
   
   
@@ -20,8 +61,8 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
 }
+	</script>
 
-</script>
 <div id="mySidenav" class="sidenav">
 	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	  <a href="panier.php">Cocktails préférés</a>
@@ -30,10 +71,9 @@ function closeNav() {
 			<select id="cars" name="cars">
 			  <option value="fruit">Fruit</option>
 			  <option value="jus">Jus</option>
-			  
 			</select>
-		</form>
-	</div>
+	  </form>
+</div>
 	<div id="main">
 	<header>
 		<h1>Cocktails</h1>
@@ -52,8 +92,11 @@ function closeNav() {
 	<span onclick="openNav()"><img src="icons/menu.jpg" alt="icon"></span>
 	</div>
 		
-	<main>	
-		hallo
+	<main>
+		<div class = "ui-widget">
+        	<label for = "automplete-1">Ingredients souhaitées: </label>
+        	<input id = "automplete-1">
+      </div>
 	</main>
 
 	<footer>
