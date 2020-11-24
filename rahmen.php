@@ -43,6 +43,12 @@
               	delay:500,
               	autoFocus:true
             });
+            $( "#automplete-2" ).autocomplete({
+              	source: availableTutorials,
+              	minLength: 1,
+              	delay:500,
+              	autoFocus:true
+            });
          });
       </script>
 	</head>
@@ -61,18 +67,22 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
 }
+
+function affiche(elem){
+		document.getElementById("affichage").src = elem;
+	}
 	</script>
 
 <div id="mySidenav" class="sidenav">
 	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	  <a href="panier.php">Cocktails préférés</a>
 	  <a href="contact.html">Contact</a>
-	  <form>
-			<select id="cars" name="cars">
-			  <option value="fruit">Fruit</option>
-			  <option value="jus">Jus</option>
-			</select>
-	  </form>
+	  <div class = "ui-widget">
+        	<label for = "automplete-1">Ingredients souhaitées: </label>
+        	<input id = "automplete-1">
+        	<label for = "automplete-2">Ingredients non-souhaitées: </label>
+        	<input id = "automplete-2">
+      </div>
 </div>
 	<div id="main">
 	<header>
@@ -80,9 +90,7 @@ function closeNav() {
 		<a href="panier.html">
 			<img  src="icons/herz_icon.png" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 		</a>
-		<a href="page_identification.php">
-			<img  src="icons/compte_icon.png" alt="compte icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
-		</a>
+		<img  src="icons/compte_icon.png" alt="compte icon" onClick = 'affiche("page_identification.php")' style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
 	</header>
 
 	
@@ -93,10 +101,7 @@ function closeNav() {
 	</div>
 		
 	<main>
-		<div class = "ui-widget">
-        	<label for = "automplete-1">Ingredients souhaitées: </label>
-        	<input id = "automplete-1">
-      </div>
+		<iframe id="affichage" scrolling="no" frameborder="0" style="height: 100%; width: 100%" src=""></iframe>
 	</main>
 
 	<footer>
