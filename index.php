@@ -37,7 +37,7 @@ function closeNav() {
 	<div id="main">
 	<header>
 		<h1>Cocktails</h1>
-		<a href="panier.html">
+		<a href="panier.php">
 			<img  src="icons/herz_icon.png" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 		</a>
 		<a href="page_identification.php">
