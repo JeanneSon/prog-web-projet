@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION["MesRecettes"] = "";
+include("Donnees.inc.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
