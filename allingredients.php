@@ -1,6 +1,6 @@
 <?php
     include("Donnees.inc.php");
-    $all = [];
+    $all = array();
     foreach ($Hierarchie as $key => $innerArray) {
         $all[] = $key; //ligne 1470
         if (is_array($innerArray)) {//1471

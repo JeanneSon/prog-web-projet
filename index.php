@@ -16,35 +16,12 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script type="text/javascript" src="javascript.js"></script>
-
+	<?php include("Donnees.inc.php"); ?>
 	<!-- Javascript -->
 	<script>
+		<?php include("allingredients.php"); ?>
 		$(function() {
-			var ingredients = [
-				'Malibu',
-				'Cerise',
-				'Jus de goyave',
-				'Cerise griotte',
-				'Aperol',
-				'Prosecco',
-				'Glaçon',
-				'Orange sanguine',
-				'Eau gazeuse',
-				'Curaçao',
-				'Rhum blanc',
-				'Tequila',
-				'Martini',
-				'Sirop de sucre de canne',
-				'Stout (bière)',
-				'Champagne',
-				'Vodka',
-				'Jus de tomates',
-				'Jus de citron',
-				'Sauce worcestershire',
-				'Sauce tabasco',
-				'Sel de céleri',
-				'Poivre',
-			];
+			var ingredients = [<?php echo '"'.implode('","', $simple).'"' ?>];
 			$("#automplete-1").autocomplete({
 				source: ingredients,
 				minLength: 1,
