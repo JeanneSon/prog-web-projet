@@ -1,42 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Liste</title>
-
-        <script>
-            function change(ingredient) {
-                document.getElementById("liste").innerHTML = <?php echo affichageliste(ingredient) ?>;
-            }
-        </script>
-
-    </head>
-    <body>
-        
-        <?php
+<?php include 'Donnees.inc.php';
+    $filsariane = 'Aliment';
         function generationliste( $index) {
             include 'Donnees.inc.php';
-            $categories = $Hierarchie[$index]['sous-categorie'];
-            $all = array();
-            foreach ($categories as $categorie){
-                array_push($all, $categorie);
+            if (isset($Hierarchie[$index]['sous-categorie'])) {
+                $categories = $Hierarchie[$index]['sous-categorie'];
+                $all = array();
+                foreach ($categories as $categorie){
+                    array_push($all, $categorie);
+                }
+                return $all;
             }
-            return $all;
         }
 
         function affichageliste($ingredient){
-            $arraydata = generationliste($ingredient);
-            foreach ($arraydata as $data){
-                ?> <p onclick="change(<?php echo $data ?>)"> <?php echo $data ?><br /></p>
-            <?php }
+            if (null !== generationliste($ingredient)) {
+                $arraydata = generationliste($ingredient);
+                foreach ($arraydata as $data){
+                    echo '<li><a href="?page=liste&liste='.$data.'">'.$data.'</a></li>';   
+                }
+            }
         }
-        ?>
-
-        <div id="liste">
-        <?php 
-        echo affichageliste('Aliment');
-        ?>
-        </div>
         
-    </body>
-</html>
+        if (isset($_GET['page'])) {
+            if(isset($_GET['liste'])) {
+                $ingredient=$_GET['liste'];
+                $filsariane.=" / ".$ingredient;
+            }
+            echo $filsariane;
+            include($_GET['page'].".php");
+        }
+        else
+            echo affichageliste('Aliment');
+        ?>
