@@ -75,7 +75,7 @@ function closeNav() {
 }
 function affiche(elem){
 		document.getElementById("affichage").src = elem;
-	}
+}
 	</script>
 <div id="mySidenav" class="sidenav">
 	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -95,7 +95,7 @@ function affiche(elem){
 			<img  src="icons/herz_icon.png" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 		</a>
 		<img  src="icons/compte_icon.png" alt="compte icon" onClick = 'affiche("page_identification.php")' style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
-
+    
 	</header>
 
 	
