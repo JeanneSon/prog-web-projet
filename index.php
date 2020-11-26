@@ -22,40 +22,17 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 
 	<!-- Javascript -->
 	<script>
+		<?php include("allingredients.php"); ?>
 		$(function() {
-			var availableTutorials = [
-				'Malibu',
-				'Cerise',
-				'Jus de goyave',
-				'Cerise griotte',
-				'Aperol',
-				'Prosecco',
-				'Glaçon',
-				'Orange sanguine',
-				'Eau gazeuse',
-				'Curaçao',
-				'Rhum blanc',
-				'Tequila',
-				'Martini',
-				'Sirop de sucre de canne',
-				'Stout (bière)',
-				'Champagne',
-				'Vodka',
-				'Jus de tomates',
-				'Jus de citron',
-				'Sauce worcestershire',
-				'Sauce tabasco',
-				'Sel de céleri',
-				'Poivre',
-			];
+			var ingredients = [<?php echo '"'.implode('","', $simple).'"' ?>];
 			$("#automplete-1").autocomplete({
-				source: availableTutorials,
+				source: ingredients,
 				minLength: 1,
 				delay: 500,
 				autoFocus: true
 			});
 			$("#automplete-2").autocomplete({
-				source: availableTutorials,
+				source: ingredients,
 				minLength: 1,
 				delay: 500,
 				autoFocus: true
@@ -119,7 +96,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 				<input id = "automplete-2">
 			</div>
 			<?php 
-				include 'dropdown.php'; 
+				include 'liste_ingredients.php'; 
 				//if (!isset($_GET['page'])) $_GET['page'] = 'index';
 				// L'utilisateur accède-t-il à une page autorisée
 				if (isset($_GET['page'])) {
