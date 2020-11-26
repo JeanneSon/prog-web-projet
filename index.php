@@ -2,6 +2,7 @@
 session_start();
 $_SESSION["MesRecettes"] = "";
 include("Donnees.inc.php");
+$utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +15,7 @@ include("Donnees.inc.php");
 	<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="javascript.js"></script>
 
 	<!-- Javascript -->
 	<script>
@@ -83,81 +85,42 @@ include("Donnees.inc.php");
 		<a href="?page=panier">Cocktails préférés</a>
 		<a href="?page=page_identification">Créer un compte</a>
 		<a href="?page=contact">Contact</a>
-		<div class="ui-widget">
-			<label for="automplete-1">Ingredients souhaitées: </label>
-			<input id="automplete-1">
-			<label for="automplete-2">Ingredients non-souhaitées: </label>
-			<input id="automplete-2">
-		</div>
 	</div>
 	<div id="main">
 		<header>
 			<h1>Cocktails</h1>
 			<a href="?page=panier">
-				<img src="icons/herz_icon.png" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
+				<img src="icons/sac.svg" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 			</a>
 			<a href="?page=page_identification">
 				<img src="icons/compte_icon.png" alt="compte icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
 			</a>
 		</header>
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
-}
-function affiche(elem){
-		document.getElementById("affichage").src = elem;
-}
-</script>
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	  <a href="panier.php">Cocktails préférés</a>
-	  <a href="contact.html">Contact</a>
-	</div>
-	<div id="main">
-	<header>
-		<h1>Cocktails</h1>
-		<a href="panier.php">
-			<img  src="icons/herz_icon.png" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
-		</a>
-		<img  src="icons/compte_icon.png" alt="compte icon" onClick = 'affiche("page_identification.php")' style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
 
-	</header>
-
-
-	<!-- Use any element to open the sidenav -->
-	<div>
-	<span onclick="openNav()"><img src="icons/menu.jpg" alt="icon"></span>
-	</div>
-		
-	<main>
-    <div class = "ui-widget">
-          <label for = "automplete-1">Ingredients souhaitées: </label>
-          <input id = "automplete-1">
-          <label for = "automplete-2">Ingredients non-souhaitées: </label>
-          <input id = "automplete-2">
-    </div>
-    <?php include 'dropdown.php';?>
-		<iframe id="affichage" scrolling="no" frameborder="0" style="height: 100%; width: 100%" src=""></iframe>
-	</main>
 
 		<!-- Use any element to open the sidenav -->
 		<div>
 			<span onclick="openNav()"><img src="icons/menu.jpg" alt="icon"></span>
 		</div>
-
+		
 		<main>
-			<?php include 'dropdown.php'; 
-			//if (!isset($_GET['page'])) $_GET['page'] = 'index';
-			// L'utilisateur accède-t-il à une page autorisée
-			if (isset($_GET['page'])) {
-				if (in_array($_GET['page'], ['index', 'contact', 'panier', 'page_identification'])) {
-				include($_GET['page'] . ".php");
+			<div class = "ui-widget">
+				<label for = "automplete-1">Ingredients souhaitées: </label>
+				<input id = "automplete-1">
+				<label for = "automplete-2">Ingredients non-souhaitées: </label>
+				<input id = "automplete-2">
+			</div>
+			<?php 
+				include 'dropdown.php'; 
+				//if (!isset($_GET['page'])) $_GET['page'] = 'index';
+				// L'utilisateur accède-t-il à une page autorisée
+				if (isset($_GET['page'])) {
+					if (in_array($_GET['page'], ['index', 'contact', 'panier', 'page_identification'])) {
+						include($_GET['page'] . ".php");
+					}
 				}
-			}
 			?>
-
-</main>
+		</main>
 
 		<footer>
 			<hr />

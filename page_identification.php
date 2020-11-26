@@ -1,7 +1,6 @@
 <?php
 	include 'verification_identification.php';
 	include 'creation_compte.php';
-	$utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
 	if(isset($_POST['submit'])){
 		if ($ChampsIncorrects !='') {
 			echo ' <br /> Merci de remplir correctement les champs ci-dessous :

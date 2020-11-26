@@ -5,9 +5,12 @@
     	<legend>Création de compte</legend>
 
     Login :
-    	<input type="text" name="login" <?php if($ClassLogin =='error'){echo "style ='background-color: red'";}?> required="required" 
+    	<input type="text" name="login" id="login" <?php if($ClassLogin =='error'){echo "style ='background-color: red'";}?> required="required" 
 		value="<?php if(isset($_POST['login']))  echo $_POST['login']; ?>"/>
 		<br />
+		<div>
+			<p style='background-color: red'><span id="loginIndisponible"></span></p>
+		</div>
 
 	Mot de passe :
     	<input type="text" name="mdp" <?php if($ClassMdp =='error'){echo "style ='background-color: red'";}?> required="required" 
