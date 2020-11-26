@@ -16,7 +16,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script type="text/javascript" src="javascript.js"></script>
-	<?php include("Donnees.inc.php"); ?>
+
 	<!-- Javascript -->
 	<script>
 		<?php include("allingredients.php"); ?>
