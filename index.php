@@ -76,17 +76,11 @@ function closeNav() {
 function affiche(elem){
 		document.getElementById("affichage").src = elem;
 }
-	</script>
-<div id="mySidenav" class="sidenav">
-	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+</script>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	  <a href="panier.php">Cocktails préférés</a>
 	  <a href="contact.html">Contact</a>
-	  <div class = "ui-widget">
-        	<label for = "automplete-1">Ingredients souhaitées: </label>
-        	<input id = "automplete-1">
-        	<label for = "automplete-2">Ingredients non-souhaitées: </label>
-        	<input id = "automplete-2">
-      </div>
 	</div>
 	<div id="main">
 	<header>
@@ -95,7 +89,7 @@ function affiche(elem){
 			<img  src="icons/herz_icon.png" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 		</a>
 		<img  src="icons/compte_icon.png" alt="compte icon" onClick = 'affiche("page_identification.php")' style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
-    
+
 	</header>
 
 	
@@ -105,8 +99,14 @@ function affiche(elem){
 	<span onclick="openNav()"><img src="icons/menu.jpg" alt="icon"></span>
 	</div>
 		
-	<main>	
-		<?php include 'dropdown.php';?>
+	<main>
+    <div class = "ui-widget">
+          <label for = "automplete-1">Ingredients souhaitées: </label>
+          <input id = "automplete-1">
+          <label for = "automplete-2">Ingredients non-souhaitées: </label>
+          <input id = "automplete-2">
+    </div>
+    <?php include 'dropdown.php';?>
 		<iframe id="affichage" scrolling="no" frameborder="0" style="height: 100%; width: 100%" src=""></iframe>
 	</main>
 
