@@ -20,9 +20,10 @@
 				"rue" => $rue,
 				"codePostal" => $codePostal,
 				"ville" => $ville,
-				"recettes" => array()
+				"recettes" => array() // stocker les recettes de session
 			];
 			file_put_contents("DonneesUtilisateurs.json", json_encode($utilisateurs), LOCK_EX);
+			$_SESSION["utilisateur"] = $login;
 		}
 	}
 ?>

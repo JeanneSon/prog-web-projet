@@ -1,6 +1,9 @@
 <?php
 session_start();
-$_SESSION["MesRecettes"] = "";
+$_SESSION["MesRecettes"] = [
+	3 => 3, 
+	10 => 10,
+	7 => 7];
 include("Donnees.inc.php");
 $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
 ?>
@@ -89,6 +92,11 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	<div id="main">
 		<header>
 			<h1>Cocktails</h1>
+			<?php 
+			if (isset($_SESSION["utilisateur"])) {
+				echo "<h2>Bienvenue, ".$_SESSION["utilisateur"]." !</h2>";
+			}
+			?>
 			<a href="?page=panier">
 				<img src="icons/sac.svg" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 			</a>
