@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Ingredients</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
-</head>
-
 <?php
     include("Donnees.inc.php");
     $all = [];
@@ -23,15 +15,3 @@
     }
     $simple = array_unique($all);
 ?>
-
-<body>
-    <ul>
-<?php 
-    foreach ($simple as $element) {
-        echo "<li>$element</li>";
-    }
-?>
-    </ul>
-</body>
-</html>
-
