@@ -6,7 +6,7 @@
 
         <script>
             function change(ingredient) {
-                document.getElementById("liste").innerHTML = affichageliste(ingredient);
+                document.getElementById("liste").innerHTML = <?php echo affichageliste(ingredient) ?>;
             }
         </script>
 
@@ -27,7 +27,7 @@
         function affichageliste($ingredient){
             $arraydata = generationliste($ingredient);
             foreach ($arraydata as $data){
-                echo ?> <p onclick="change(<?php $data ?>)"> <br />
+                ?> <p onclick="change(<?php echo $data ?>)"> <?php echo $data ?><br /></p>
             <?php }
         }
         ?>
