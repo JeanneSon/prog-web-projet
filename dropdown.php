@@ -2,42 +2,41 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Dynamically Generate Select Dropdowns</title>
+        <title>Liste</title>
+
+        <script>
+            function change(ingredient) {
+                document.getElementById("liste").innerHTML = affichageliste(ingredient);
+            }
+        </script>
+
     </head>
     <body>
-        <?php include 'Donnees.inc.php';?>
-        sous-catégorie und super-catégorie
-        <form>
-          <select>
-                <option selected="selected">Choose one</option>
-                <?php
-                foreach($Hierarchie as $h => $g){
-                    foreach($g as $item => $value){
-                        foreach($value as $i => $v){
-                            echo "<option>$v</option>";}
-                    }
-                }
-                ?>
-            </select>
-            <input type="submit" value="Submit">
-        </form>
-        super-categorie
-        <form>
-            <select>
-                <option selected="selected">Choose one</option>
-                <?php
-                    foreach($Hierarchie as $name) { 
-                      echo "<option >$name</option>";
-                  
-                    } ?>
-                
-                
-            </select>
-        </form>
-        <form>
-            <select>
-                <option selected="selected">Choose one</option>
-            </select>
-        </form>
+        
+        <?php
+        function generationliste( $index) {
+            include 'Donnees.inc.php';
+            $categories = $Hierarchie[$index]['sous-categorie'];
+            $all = array();
+            foreach ($categories as $categorie){
+                array_push($all, $categorie);
+            }
+            return $all;
+        }
+
+        function affichageliste($ingredient){
+            $arraydata = generationliste($ingredient);
+            foreach ($arraydata as $data){
+                echo ?> <p onclick="change(<?php $data ?>)"> <br />
+            <?php }
+        }
+        ?>
+
+        <div id="liste">
+        <?php 
+        echo affichageliste('Aliment');
+        ?>
+        </div>
+        
     </body>
 </html>
