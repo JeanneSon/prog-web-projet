@@ -1,6 +1,6 @@
 <script type="text/javascript">
 	function compte(){
-		document.getElementById("compte").innerHTML= <?php include 'creation_compte.php'; ?>;
+		window.location.href = "?page=page_creation";
 }
 </script>	
 	<h1>Vos données</h1>

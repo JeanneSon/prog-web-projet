@@ -69,11 +69,13 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	<div id="main">
 		<header>
 			<h1>Cocktails</h1>
+			<h2>Bienvenue
 			<?php 
 			if (isset($_SESSION["utilisateur"])) {
-				echo "<h2>Bienvenue, ".$_SESSION["utilisateur"]." !</h2>";
-			}
+				echo ", ".$_SESSION["utilisateur"]." !";
+			} else echo "! Vous n'êtes pas encore connecté.";
 			?>
+			</h2>
 			<a href="?page=panier">
 				<img src="icons/sac.svg" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 			</a>
@@ -100,7 +102,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 				//if (!isset($_GET['page'])) $_GET['page'] = 'index';
 				// L'utilisateur accède-t-il à une page autorisée
 				if (isset($_GET['page'])) {
-					if (in_array($_GET['page'], ['index', 'contact', 'panier', 'page_identification'])) {
+					if (in_array($_GET['page'], ['index', 'contact', 'panier', 'page_identification', 'page_creation'])) {
 						include($_GET['page'] . ".php");
 					}
 				}

@@ -1,4 +1,4 @@
-<h1>Cocktails Préférés</h1>
+<h2>Cocktails Préférés</h2>
 <?php 
 $affichageRecettes = $_SESSION["MesRecettes"];
 if (isset($_SESSION["utilisateur"])) {
