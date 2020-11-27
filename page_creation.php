@@ -5,8 +5,11 @@
 		if ($ChampsIncorrects !='') {
 			echo ' <br /> Merci de remplir correctement les champs ci-dessous :
 				<ul> 
-					'.$ChampsIncorrects.'
-				</ul>';
+					';
+				foreach ($ChampsIncorrects as $champs) {
+					echo '<li>'.$champs.'</li>';
+				}
+			echo '</ul>';
 		}
 		else {
 			$utilisateurs[$login] = [

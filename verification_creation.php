@@ -1,5 +1,5 @@
 <?php
-//TODO - change logic of telephone, email
+
 $ClassLogin = 'ok';
 $ClassMdp = 'ok';
 $ClassNom = 'ok';
@@ -12,7 +12,9 @@ $ClassRue = 'ok';
 $ClassCodePostal = 'ok';
 $ClassVille = 'ok';
 
-// comment stocker les données
+$ChampsIncorrects = [];
+
+
 $login = "";
 $mdp = "";
 $nom = "";
@@ -27,70 +29,96 @@ $ville = "";
 
 
 if (isset($_POST['submit'])) {
-	$ChampsIncorrects = '';
-
-	if ((!isset($_POST['login'])) || strlen($login = trim($_POST['login'])) < 2) {
-		$ChampsIncorrects = $ChampsIncorrects . 'Login, ';
-		$ClassLogin = 'error';
+	$ChampsIncorrects['Login'] = 'Login';
+	$ClassLogin = 'error';
+	if (isset($_POST['login'])) {
+		$trimmedLogin = trim($_POST['login']);
+		if (strlen($trimmedLogin) > 1) {
+			unset($ChampsIncorrects['Login']);
+			$ClassLogin = 'ok';
+			$login = $trimmedLogin;
+		}
 	}
 
-	if ((!isset($_POST['mdp'])) || strlen($mdp = trim($_POST['mdp'])) < 2) {
-		$ChampsIncorrects = $ChampsIncorrects . 'Mot de passe, ';
-		$ClassMdp = 'error';
+	$ChampsIncorrects['Mot de passe'] = 'Mot de passe';
+	$ClassMdp = 'error';
+	if (isset($_POST['mdp'])) {
+		$trimmedMdp = trim($_POST['mdp']);
+		if (strlen($trimmedMdp) > 1) {
+			$ClassMdp = "ok";
+			unset($ChampsIncorrects['Mot de passe']);
+			$mdp = $trimmedMdp;
+		}
 	}
 
-	if ((!isset($_POST['nom'])) || (strlen($nom = trim($_POST['nom'])) < 2)) {
-		if (trim($_POST['nom']) != '') {
-			$ChampsIncorrects = $ChampsIncorrects . 'Nom, ';
+	if (isset($_POST['nom'])) {
+		$trimmedNom = trim($_POST['nom']);
+		if (strlen($trimmedNom) == 1) {
+			$ChampsIncorrects['Nom'] = 'Nom';
 			$ClassNom = 'error';
+		} else if (strlen($trimmedNom) > 1) {
+			$nom = $trimmedNom;
 		}
 	}
 
-	if (!isset($_POST['prenom']) || (strlen($prenom = trim($_POST['prenom'])) < 2)) {
-		if (trim($_POST['prenom']) != '') {
-			$ChampsIncorrects = $ChampsIncorrects . 'Prénom, ';
+
+	if (isset($_POST['prenom'])) {
+		$trimmedPrenom = trim($_POST['prenom']);
+		if (strlen($trimmedPrenom) == 1) {
+			$ChampsIncorrects['Prénom'] = 'Prénom';
 			$ClassPrenom = 'error';
+		} else if (strlen($trimmedPrenom) > 1) {
+			$prenom = $trimmedPrenom;
 		}
 	}
 
-	if ((isset($_POST['sexe'])) && ($sexe = (trim($_POST['sexe']) != 'f') && (trim($_POST['sexe']) != 'h'))) {
-		$ChampsIncorrects = $ChampsIncorrects . 'Sexe, ';
-		$ClassSexe = 'error';
+
+	if (isset($_POST['sexe'])) {
+		$trimmedSexe = trim($_POST['sexe']);
+		if ($trimmedSexe == "f" || $trimmedSexe == "h") {
+			$sexe = $trimmedSexe;
+		} else {
+			$ChampsIncorrects['Sexe'] = 'Sexe';
+			$ClassSexe = 'error';
+		}
 	}
 
-	if ((!isset($_POST['naissance'])) || (trim($_POST['naissance']) == '')) {
-		$ClassNaissance = 'ok';
-	} else if (isset($_POST['naissance'])) {
-		list($Annee, $Mois, $Jour) = explode('-', $_POST['naissance']);
-		if (!checkdate($Mois, $Jour, $Annee)) {
-			$ChampsIncorrects = $ChampsIncorrects . 'Date de naissance, ';
-			$ClassNaissance = 'error';
-		} else $naissance = $_POST['naissance'];
+	if (isset($_POST['naissance'])) {
+		$trimmedNaissance = trim($_POST['naissance']);
+		if ($trimmedNaissance != "") {
+			list($Annee, $Mois, $Jour) = explode('-', $trimmedNaissance);
+			if (!checkdate($Mois, $Jour, $Annee)) {
+				$ChampsIncorrects['Date de naissance'] = 'Date de naissance';
+				$ClassNaissance = 'error';
+			} else $naissance = $trimmedNaissance;
+		} 
 	}
-	if ((!isset($_POST['email']) || (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)))) {
-		if (trim($_POST['email']) != '') {
-			$ChampsIncorrects = $ChampsIncorrects . 'Adresse électronique, ';
+
+	if (isset($_POST['email'])) {
+		$trimmedEmail = trim($_POST['email']);
+		if (filter_var($trimmedEmail, FILTER_VALIDATE_EMAIL)) {
+			$email = $trimmedEmail;
+		} else if ($trimmedEmail != "") {
+			$ChampsIncorrects['Adresse électronique'] = 'Adresse électronique';
 			$ClassEmail = 'error';
 		}
 	}
-	if (isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-		$email = $_POST['email'];
-	}
-
-	if ((!isset($_POST['telephone'])) || (!preg_match("#([0-9]{2}){5}#", $_POST['telephone']))) {
-		if (trim($_POST['telephone']) != '') {
-			$ChampsIncorrects = $ChampsIncorrects . 'Numéro de telephone, ';
+	
+	if (isset($_POST['telephone'])) {
+		$trimmedTelephone = trim($_POST['telephone']);
+		if (preg_match("#([0-9]{2}){5}#", $trimmedTelephone)) {
+			$telephone = $trimmedTelephone;
+		}
+		else {
+			$ChampsIncorrects['Numéro de telephone'] = 'Numéro de telephone';
 			$ClassTelephone = 'error';
-		} 
-	}
-	if (isset($_POST['telephone']) && preg_match("#([0-9]{2}){5}#", $_POST['telephone'])) {
-		$telephone = $_POST['telephone'];
+		}
 	}
 
 	if (isset($_POST['rue'])) {
 		$trimmedRue = trim($_POST['rue']);
 		if (strlen($trimmedRue) == 1) {
-			$ChampsIncorrects = $ChampsIncorrects . 'Rue, ';
+			$ChampsIncorrects['Rue'] = 'Rue';
 			$ClassRue = 'error';
 		} else if (strlen($trimmedRue) >= 2) {
 			$rue = $trimmedRue;
@@ -101,7 +129,7 @@ if (isset($_POST['submit'])) {
 		$trimmedCodePostal = trim($_POST['codePostal']);
 		if (strlen($trimmedCodePostal) > 0) {
 			if (strlen($trimmedCodePostal) != 5) {
-				$ChampsIncorrects = $ChampsIncorrects . 'CodePostal, ';
+				$ChampsIncorrects['CodePostal'] = 'CodePostal';
 				$ClassCodePostal = 'error';
 			} else {
 				$codePostal = $trimmedCodePostal;
@@ -113,7 +141,7 @@ if (isset($_POST['submit'])) {
 		$trimmedVille = $_POST['ville'];
 		if ($trimmedVille != "") {
 			if (strlen($trimmedVille) < 2) {
-				$ChampsIncorrects = $ChampsIncorrects . 'Ville';
+				$ChampsIncorrects['Ville'] = 'Ville';
 				$ClassVille = 'error';
 			} else {
 				$ville = $trimmedVille;

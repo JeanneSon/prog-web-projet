@@ -5,15 +5,25 @@
             $recette = $Recettes[$cocktailId];
             $ingredients = explode("|", $recette["ingredients"]);
 ?>
-    <h1 id="recette_titre"><?php echo $recette["titre"];?></h1>
+    <h2 id="recette_titre"><?php echo $recette["titre"];?></h2>
     <?php 
         $photos = scandir("Photos");
         $photo_dispo = false;
         foreach($photos as $photo) {
             if (substr($photo, -4) == ".jpg") {
                 $nom = str_replace("_", " ", substr($photo, 0, -4));
-                $motif = "/".$nom."/i";
-                if (preg_match($motif, $recette["titre"])) {
+                $titreStandardise = iconv('UTF-8','ASCII//TRANSLIT', $recette["titre"]);
+                $titre = "";
+                for ($i = 0; $i < strlen($titreStandardise); $i++) {
+                    if (preg_match("/[a-z]/i", $titreStandardise[$i])) {
+                        $titre .= $titreStandardise[$i];
+                    } else if (preg_match("/ /", $titreStandardise[$i])) {
+                        $titre .= "_";
+                    }
+                }
+                $titre .= ".jpg";
+                $motif = "/".$titre."/i";
+                if (preg_match($motif, $photo)) {
                     $photo_dispo = $photo;
                 }
             }
@@ -41,7 +51,7 @@
         onClick="preferer(window.location.search)"
         style="width: 40px;height: 40px; top: 10px; right: 10px; ">
     <span id="spanning-ingredients">
-        <h2 class="recette">Ingrédients</h2>
+        <h3 class="recette">Ingrédients</h3>
             <ul id="recette_ingredients">
         <?php 
             foreach($ingredients as $ingredient) {
@@ -53,7 +63,7 @@
             </ul>
     </span>
     <span id="spanning-preparation">
-        <h2 class="recette">Préparation</h2>
+        <h3 class="recette">Préparation</h3>
         <p id="recette_preparation"><?php echo $recette["preparation"];?></p>
     </span>
 <?php
