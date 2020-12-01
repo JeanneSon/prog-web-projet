@@ -27,8 +27,7 @@
                 $filsariane.=" / ".$ingredient;
             }
             echo $filsariane;
-            include($_GET['page'].".php");
         }
         else
             echo affichageliste('Aliment');
-        ?>
+?>
