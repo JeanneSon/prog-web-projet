@@ -15,6 +15,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	<title>Projekt Header, footer, nav</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="styleNav.css">
+	<link rel="stylesheet" href="styles.css">
 	<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -91,14 +92,17 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 		</div>
 		
 		<main>
+			<div id="rechercheRecettes">
 			<div class = "ui-widget">
 				<label for = "automplete-1">Ingredients souhaitées: </label>
 				<input id = "automplete-1">
 				<label for = "automplete-2">Ingredients non-souhaitées: </label>
 				<input id = "automplete-2">
 			</div>
+			<div id="recherche">
 			<?php 
-				include 'liste_ingredients.php'; 
+				include 'liste_ingredients.php';  ?>
+				</div> <?php
 				//if (!isset($_GET['page'])) $_GET['page'] = 'index';
 				// L'utilisateur accède-t-il à une page autorisée
 				if (isset($_GET['page'])) {
@@ -107,6 +111,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 					}
 				}
 			?>
+			</div>
 		</main>
 
 		<footer>
