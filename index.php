@@ -69,7 +69,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	</div>
 	<div id="main">
 		<header>
-			<h1> <a href="?page=inde">Cocktails</a></h1>
+			<h1> <a href="?page=index">Cocktails</a></h1>
 			<h2>Bienvenue
 			<?php 
 			if (isset($_SESSION["utilisateur"])) {
