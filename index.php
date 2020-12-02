@@ -103,7 +103,8 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			<h3> Recherche de cocktails par une liste</h3>
 			<?php 
 				include 'liste_ingredients.php';  ?>
-				</div> <?php
+				</div> </div> 
+				<div id=rest><?php
 				//if (!isset($_GET['page'])) $_GET['page'] = 'index';
 				// L'utilisateur accède-t-il à une page autorisée
 				if (isset($_GET['page'])) {
@@ -115,8 +116,8 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 					}
 				}else {
 					include 'liste_cocktails.php';}
-			?>
-			</div>
+			?></div>
+			
 		</main>
 
 		<footer>
