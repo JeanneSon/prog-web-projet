@@ -8,13 +8,11 @@
 			<p id="erreur"></p>
 
 		Login :
-			<input type="text" name="login" <?php if($ClassLogin=='error'){echo "style ='background-color: red'";}?> required="required" 
-			value="<?php if(isset($_POST['login']))  echo $_POST['login']; ?>"/>
+			<input type="text" name="login" required="required" />
 			<br />
 
 		Mot de passe :
-			<input type="text" name="mdp" <?php if($ClassMdp=='error'){echo "style ='background-color: red'";}?> required="required" 
-			value="<?php if(isset($_POST['mdp']))  echo $_POST['mdp']; ?>"/>
+			<input type="text" name="mdp" required="required" />
 			<br />
 
 		Pas encore de compte ? Créer vous en un en cliquant ici:

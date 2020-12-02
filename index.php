@@ -1,9 +1,9 @@
 <?php
 session_start();
 $_SESSION["MesRecettes"] = [
-	3 => 3, 
-	10 => 10,
-	7 => 7];
+	"3" => 3, 
+	"10" => 10,
+	"7" => 7];
 include("Donnees.inc.php");
 $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
 ?>
@@ -69,11 +69,11 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	</div>
 	<div id="main">
 		<header>
-			<h1> <a href="?page=index">Cocktails</a></h1>
+			<h1> <a href="index.php">Cocktails</a></h1>
 			<h2>Bienvenue
 			<?php 
 			if (isset($_SESSION["utilisateur"])) {
-				echo ", ".$_SESSION["utilisateur"]." !";
+				echo " ".$_SESSION["utilisateur"]." !";
 			} else echo "! Vous n'êtes pas encore connecté.";
 			?>
 			</h2>
