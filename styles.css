@@ -99,3 +99,9 @@ li{
 ul{
     list-style: none;
 }
+
+footer {
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+}
