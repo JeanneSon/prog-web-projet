@@ -3,7 +3,7 @@
 		window.location.href = "?page=page_creation";
 }
 </script>	
-	<h1>Vos données</h1>
+	<h2 style="position:absolute;left: 20%; top: 15px;font-size:larger;display: inline;">Vos données</h2>
 
 	<form method="post" action="#" >
 	<fieldset>

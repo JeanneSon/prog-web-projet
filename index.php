@@ -86,20 +86,21 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 		</header>
 
 
-		<!-- Use any element to open the sidenav -->
 		<div>
-			<span onclick="openNav()"><img src="icons/menu.jpg" alt="icon"></span>
+			<span onclick="openNav()"><img src="icons/menu.jpg" id="burger" alt="icon"></span>
 		</div>
 		
 		<main>
 			<div id="rechercheRecettes">
 			<div class = "ui-widget">
+			<h3> Recherche des cocktail par une zone de saisie</h3>
 				<label for = "automplete-1">Ingredients souhaitées: </label>
 				<input id = "automplete-1">
 				<label for = "automplete-2">Ingredients non-souhaitées: </label>
 				<input id = "automplete-2">
 			</div>
 			<div id="recherche">
+			<h3> Recherche de cocktails par une liste</h3>
 			<?php 
 				include 'liste_ingredients.php';  ?>
 				</div> <?php

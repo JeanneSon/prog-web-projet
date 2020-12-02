@@ -1,4 +1,4 @@
-<h2>Cocktails Préférés</h2>
+<h2 style="position:absolute;left: 20%; top: 15px;font-size:larger;display: inline;">Cocktails Préférés</h2>
 <?php 
 $affichageRecettes = $_SESSION["MesRecettes"];
 if (isset($_SESSION["utilisateur"])) {

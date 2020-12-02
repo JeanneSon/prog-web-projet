@@ -9,6 +9,14 @@ h1{
 }
 
 h2{
+    position:absolute;
+    left: 60%;
+    top: 15px;
+    font-size:larger;
+    display: inline;
+}
+
+h3{
     font-size: medium;
 }
 
@@ -82,5 +90,4 @@ li{
 }
 ul{
     list-style: none;
-    height
 }
