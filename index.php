@@ -112,10 +112,9 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 						if (($_GET['page'] == 'index')||($_GET['page'] == 'liste')) {
 							include 'liste_cocktails.php';
 						}
-						include($_GET['page'] . ".php");
+						//include($_GET['page'] . ".php");
 					}
-				}else {
-					include 'liste_cocktails.php';}
+				}else {include 'liste_cocktails.php';}
 			?></div>
 			
 		</main>
