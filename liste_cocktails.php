@@ -1,21 +1,12 @@
-<?php include 'Donnees.inc.php';?>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title></title>
-</head>
-<body>
-    <?php
-        $allcocktails = array();
+<?php
     foreach ($Recettes as $key => $innerArray) {
-        $allcocktails[] = $key; 
+        ?> <ul> <?php
         if (is_array($innerArray)) {
-            $allcocktails[] = $innerArray['titre'];
+            //?page=cocktail-detail&cocktailId=3
+            echo '<li><a href="#">'.$innerArray['titre'].'</a></li>';
         }
+        ?> </ul> <?php
     }
-    $cocktails = implode("<br>", $allcocktails);
-    echo $cocktails;
     ?>
     <?php
     $allcocktailsIngredients = array();
@@ -32,7 +23,5 @@
         }
     }
     $cocktailsIngredients = implode("<br>", $allcocktailsIngredients);
-    echo $cocktailsIngredients;
+    //echo $cocktailsIngredients;
     ?>
-</body>
-</html>
