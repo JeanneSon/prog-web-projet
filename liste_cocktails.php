@@ -1,38 +1,49 @@
-<?php include 'Donnees.inc.php';?>
-<!DOCTYPE html>
-<html>
+<?php
+    $choixIngredient = "";
 
-<head>
-    <title></title>
-</head>
-<body>
-    <?php
-        $allcocktails = array();
-    foreach ($Recettes as $key => $innerArray) {
-        $allcocktails[] = $key; 
-        if (is_array($innerArray)) {
-            $allcocktails[] = $innerArray['titre'];
+    if (isset($_GET['page'])) {
+        if(isset($_GET['liste'])) {
+            $choixIngredient = $_GET['liste'];
         }
     }
-    $cocktails = implode("<br>", $allcocktails);
-    echo $cocktails;
-    ?>
-    <?php
+
     $allcocktailsIngredients = array();
+    $allcocktailsKeys[] = array();
     foreach ($Recettes as $key => $innerArray) {
-        $allcocktailsIngredients[] = $key; //ligne 1470
+        //$allcocktailsIngredients[] = $key; //ligne 1470
         if (is_array($innerArray)) {//1471
             foreach ($innerArray as $superEtSous => $innerInnerArray) {
                 if(is_array($innerInnerArray)) {
                     foreach ($innerInnerArray as $ingredient) {
-                        $allcocktailsIngredients[] = $ingredient;
+                        if ($ingredient == $choixIngredient) {
+                            $allcocktailsKeys[] = $key;
+                        } //else {
+                            //$allcocktailsIngredients[] = $ingredient;
+                            //$allcocktailsKeys[] = $key;
+                        //}
                     }
                 }
             }
         }
     }
-    $cocktailsIngredients = implode("<br>", $allcocktailsIngredients);
-    echo $cocktailsIngredients;
+    //print_r($allcocktailsKeys);
+
+    foreach ($Recettes as $key => $innerArray) {
+        ?> <ul> <?php
+        foreach($allcocktailsKeys as $element => $innerElement){
+            if(!is_array($innerElement)) {
+                if ($innerElement == $key) {
+                    if (is_array($innerArray)) {
+                        echo '<li><a href="?page=cocktail-detail&cocktailId='.$key.'"">'.$innerArray['titre'].'</a></li>';
+                    }
+                }
+            }
+        }   
+        ?> </ul> <?php
+    }
+
+    //$cocktailsIngredients = implode("<br>", $allcocktailsIngredients);
+    //echo $cocktailsIngredients;
+
+    
     ?>
-</body>
-</html>

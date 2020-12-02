@@ -69,7 +69,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	</div>
 	<div id="main">
 		<header>
-			<h1>Cocktails</h1>
+			<h1> <a href="?page=index">Cocktails</a></h1>
 			<h2>Bienvenue
 			<?php 
 			if (isset($_SESSION["utilisateur"])) {
@@ -102,17 +102,21 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			<div id="recherche">
 			<h3> Recherche de cocktails par une liste</h3>
 			<?php 
-				//include 'liste_ingredients.php';  ?>
-				</div> <?php
+				include 'liste_ingredients.php';  ?>
+				</div> </div> 
+				<div id=rest><?php
 				//if (!isset($_GET['page'])) $_GET['page'] = 'index';
 				// L'utilisateur accède-t-il à une page autorisée
 				if (isset($_GET['page'])) {
-					if (in_array($_GET['page'], ['index', 'contact', 'panier', 'page_identification', 'page_creation'])) {
-						include($_GET['page'] . ".php");
+					if (in_array($_GET['page'], ['index', 'contact', 'panier', 'page_identification', 'page_creation', 'liste'])) {
+						if (($_GET['page'] == 'index')||($_GET['page'] == 'liste')) {
+							include 'liste_cocktails.php';
+						}
+						//include($_GET['page'] . ".php");
 					}
-				}
-			?>
-			</div>
+				}else {include 'liste_cocktails.php';}
+			?></div>
+			
 		</main>
 
 		<footer>

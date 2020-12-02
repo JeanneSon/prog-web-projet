@@ -51,15 +51,23 @@ h3{
     min-height: 240px;
     padding:20px;
     margin: 50px 10px;
-    width: 25%;
 }
 
 .ui-widget{
     top: 100px;
-    width: 25%;
     margin: 50px 10px;
     padding: 20px;
     background-color: lightgray;
+}
+
+#rechercheRecettes{
+    display:inline-block;
+}
+
+#rest{
+    display: inline-block;
+    position: absolute;
+    margin-top: 50px;
 }
 
 .ui-widget:label{
@@ -90,4 +98,10 @@ li{
 }
 ul{
     list-style: none;
+}
+
+footer {
+    position:absolute;
+    bottom: 0;
+    width: 100%;
 }

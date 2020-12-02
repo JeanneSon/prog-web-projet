@@ -13,12 +13,14 @@
         }
 
         function affichageliste($ingredient){
+            ?> <ul> <?php
             if (null !== generationliste($ingredient)) {
                 $arraydata = generationliste($ingredient);
                 foreach ($arraydata as $data){
                     echo '<li><a href="?page=liste&liste='.$data.'">'.$data.'</a></li>';   
                 }
             }
+            ?> </ul> <?php
         }
         
         if (isset($_GET['page'])) {

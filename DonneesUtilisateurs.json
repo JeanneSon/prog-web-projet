@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"mm":{"mdp":"mm","nom":"mm","prenom":"Pierre","sexe":"","naissance":"","telephone":"","email":"","rue":"","codePostal":"","ville":"","recettes":[0,5,95,99,3,10,7,3,10,7]},"mmq":{"mdp":"qq","nom":"qq","prenom":"","sexe":"","naissance":"","telephone":"","email":"","rue":"","codePostal":"","ville":"","recettes":[]},"huhu":{"mdp":"uu","nom":"uu","prenom":"","sexe":"","naissance":"","telephone":"","email":"","rue":"","codePostal":"","ville":"","recettes":[19,3,10,7,3,10,7,3,10,7,3,10,7,3,10,7,3,10,7,3,10,7,3,10,7,3,10,7]},"aa":{"recettes":null}}
+=======
+{"mm":{"mdp":"mm","nom":"mm","prenom":"Pierre","sexe":"","naissance":"","telephone":"","email":"","rue":"","codePostal":"","ville":"","recettes":[0,5,95,99,3,10,7,3,10,7]},"mmq":{"mdp":"qq","nom":"qq","prenom":"","sexe":"","naissance":"","telephone":"","email":"","rue":"","codePostal":"","ville":"","recettes":[]},"huhu":{"mdp":"uu","nom":"uu","prenom":"","sexe":"","naissance":"","telephone":"","email":"","rue":"","codePostal":"","ville":"","recettes":[19,"20","20",3,10,7]},"aa":{"recettes":null}}
+>>>>>>> 53f1553211b36241e7e9a70f1b1c2d474f376fa2
