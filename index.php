@@ -108,8 +108,8 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 				//if (!isset($_GET['page'])) $_GET['page'] = 'index';
 				// L'utilisateur accède-t-il à une page autorisée
 				if (isset($_GET['page'])) {
-					if (in_array($_GET['page'], ['index', 'contact', 'panier', 'page_identification', 'page_creation'])) {
-						if ($_GET['page'] == 'index') {
+					if (in_array($_GET['page'], ['index', 'contact', 'panier', 'page_identification', 'page_creation', 'liste'])) {
+						if (($_GET['page'] == 'index')||($_GET['page'] == 'liste')) {
 							include 'liste_cocktails.php';
 						}
 						include($_GET['page'] . ".php");
