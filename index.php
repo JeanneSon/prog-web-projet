@@ -102,7 +102,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			<div id="recherche">
 			<h3> Recherche de cocktails par une liste</h3>
 			<?php 
-				include 'liste_ingredients.php';  ?>
+				//include 'liste_ingredients.php';  ?>
 				</div> <?php
 				//if (!isset($_GET['page'])) $_GET['page'] = 'index';
 				// L'utilisateur accède-t-il à une page autorisée

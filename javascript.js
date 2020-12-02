@@ -27,3 +27,23 @@ function modifierPreference(queryString, action) {
         $.post("modifierPreference.php", { action: action, cocktailId: urlParams.get('cocktailId')});
     }
 }
+
+// fonctiions du fichier identification_form.php
+function compte(){
+    window.location.href = "?page=page_creation";
+}
+
+function valider() {
+    var login = $("input[name='login']").val().trim();
+    var mdp = $("input[name='mdp']").val().trim();
+    $.post("identification_traitement.php", {login: login, mdp: mdp}, function(data) {
+        if (data == "ok") {
+            window.location.href = "index.php";
+        }
+        else {
+            $("input[name='login']").css("background-color", "red");
+            $("input[name='mdp']").css("background-color", "red");
+            $("#erreur").html("Cette combinaison de login et mot de passe n'existe pas.");
+        }
+    })
+}
