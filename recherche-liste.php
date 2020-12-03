@@ -10,7 +10,7 @@
     foreach($fil as $element) {
         array_push($tempFil, $element);
         $tempFilString = implode("*", $tempFil);
-        echo '<a href="?page"recherche-liste&ariane='.$tempFilString.'">'.$element."</a> ";
+        echo '<a href="?page=recherche-liste&ariane='.$tempFilString.'">'.$element."</a> ";
     }
     $prochainesSousCategories = sousCategories(end($fil));
     if (!empty($prochainesSousCategories)) {
@@ -29,7 +29,9 @@
     <?php
     include_once("getIngredients.php");
     $recettesCorrespondants = recettesCorrespondants(end($fil));
-    print_r($recettesCorrespondants);
+    foreach($recettesCorrespondants as $index) {
+        echo '<li><a href="?page=cocktail-detail&cocktailId='.$index.'"">'.$Recettes[$index]["titre"].'</a></li>';
+    }
     ?>
 </div>
 

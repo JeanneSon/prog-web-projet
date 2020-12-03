@@ -1,3 +1,16 @@
+$(function(){
+    // checker si l'utilisateur est connecté
+    $.post("getDonneesUtilisateur.php", function(data) {
+        var champs = data.split(";;;");
+        champs.forEach(element => {
+            var [champ, valeur] = element.split("...");
+            var identifiant = "#" + champ;
+            $(identifiant).val(valeur);
+        });
+    })
+});
+
+
 // fonctions de la page recherche-saisie.php
 $(document).ready(function() {
     $.get("getIngredients.php", { type: "all"}, function(data) {
@@ -23,13 +36,18 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-    $("#login").blur(function() {
-        $.get("loginDisponible.php?login="+$("#login").val(),
-            function(data) {
-                $("#loginIndisponible").html(data);
-            }
-        );
-    })
+    $.post("getDonneesUtilisateur.php", function(data) {
+        if (data == "non connecté") {
+            $("#login").blur(function() {
+                $.get("loginDisponible.php?login="+$("#login").val(),
+                    function(data) {
+                        $("#loginIndisponible").html(data);
+                    }
+                );
+            })
+        }
+    });
+    
 });
 
 

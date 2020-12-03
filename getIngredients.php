@@ -43,11 +43,12 @@ function sousCategories($index) {
 function recettesCorrespondants($ingredient) {
     include("Donnees.inc.php");
     $ingredientsPotentiels = [$ingredient];
+    array_merge($ingredientsPotentiels, sousCategories($ingredient));
     $resultat = [];
-    foreach ($Recettes as $r) {
+    foreach ($Recettes as $index => $r) {
         foreach ($r["index"] as $i) {
             if ($i == $ingredient) {
-                array_push($resultat, $r["titre"]);
+                array_push($resultat, $index);
             }
         }
     }

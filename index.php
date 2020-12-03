@@ -1,10 +1,12 @@
 <?php
+//TODO: do not always request user data
 session_start();
 if (!isset($_SESSION["MesRecettes"])) {
 	$_SESSION["MesRecettes"] = [
 		"3" => 3, 
 		"10" => 10,
-		"7" => 7];
+		"7" => 7
+	];
 }
 include("Donnees.inc.php");
 $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
@@ -47,7 +49,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<a href="?page=panier">Cocktails préférés</a>
-		<a href="?page=page_identification">Créer un compte</a>
+		<a href="?page=compte-detail">Créer un compte</a>
 		<a href="?page=recherche-liste">Recherche de cocktails par une liste</a>
 		<a href="?page=recherche-saisie">Recherche des cocktails par une zone de saisie</a>
 	</div>
@@ -58,7 +60,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			<h1><a href="index.php">Cocktails</a></h1>
 
 			<!-- Bienvenue à l'utilisateur -->
-			<h2>Bienvenue
+			<h2 id="bienvenue">Bienvenue
 			<?php 
 			if (isset($_SESSION["utilisateur"])) {
 				echo " ".$_SESSION["utilisateur"]." !";
@@ -84,7 +86,13 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 		<main>
 			<?php
 			if (isset($_GET["page"])) {
-				if (in_array($_GET["page"], ["recherche-liste", "recherche-saisie", "cocktail-detail", "panier", "page_identification"])) {
+				if (in_array($_GET["page"], [
+					"recherche-liste", 
+					"recherche-saisie", 
+					"cocktail-detail", 
+					"panier", 
+					"page_identification",
+					"compte-detail"])) {
 					include($_GET['page'].".php");
 				}
 			}
