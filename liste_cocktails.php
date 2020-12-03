@@ -10,17 +10,16 @@
     $allcocktailsIngredients = array();
     $allcocktailsKeys[] = array();
     foreach ($Recettes as $key => $innerArray) {
-        //$allcocktailsIngredients[] = $key; //ligne 1470
-        if (is_array($innerArray)) {//1471
+        if ($choixIngredient == "") {
+            $allcocktailsKeys[] = $key;
+        }
+        else if (is_array($innerArray)) {//1471
             foreach ($innerArray as $superEtSous => $innerInnerArray) {
                 if(is_array($innerInnerArray)) {
                     foreach ($innerInnerArray as $ingredient) {
                         if ($ingredient == $choixIngredient) {
                             $allcocktailsKeys[] = $key;
-                        } //else {
-                            //$allcocktailsIngredients[] = $ingredient;
-                            //$allcocktailsKeys[] = $key;
-                        //}
+                        }
                     }
                 }
             }
