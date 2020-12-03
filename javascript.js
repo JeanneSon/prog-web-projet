@@ -1,3 +1,27 @@
+// fonctions de la page recherche-saisie.php
+$(document).ready(function() {
+    $.get("getIngredients.php", { type: "all"}, function(data) {
+        var ingredients = data.split(",");
+        $("#automplete-1").autocomplete({
+            source: ingredients,
+            minLength: 1,
+            delay: 500,
+            autoFocus: true
+        });
+        $("#automplete-2").autocomplete({
+            source: ingredients,
+            minLength: 1,
+            delay: 500,
+            autoFocus: true
+        });
+    })    
+});
+
+
+
+
+
+
 $(document).ready(function() {
     $("#login").blur(function() {
         $.get("checkLogin.php?login="+$("#login").val(),

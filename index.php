@@ -46,6 +46,8 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<a href="?page=panier">Cocktails préférés</a>
 		<a href="?page=page_identification">Créer un compte</a>
+		<a href="?page=recherche-liste">Recherche de cocktails par une liste</a>
+		<a href="?page=recherche-saisie">Recherche des cocktails par une zone de saisie</a>
 	</div>
 
 	<div id="main">
@@ -72,19 +74,13 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 		</div>
 		
 		<main>
-				<div id=rest><?php
-				//if (!isset($_GET['page'])) $_GET['page'] = 'index';
-				// L'utilisateur accède-t-il à une page autorisée
-				if (isset($_GET['page'])) {
-					if (in_array($_GET['page'], ['index', 'contact', 'panier', 'page_identification', 'page_creation', 'recherche'])) {
-						//if (($_GET['page'] == 'index')||($_GET['page'] == 'liste')) {
-						//	include 'liste_cocktails.php';
-						//}
-						include($_GET['page'] . ".php");
-					}
-				}else {include 'recherche.php';}
-			?></div>
-			
+			<?php
+			if (isset($_GET["page"])) {
+				if (in_array($_GET["page"], ["recherche-liste", "recherche-saisie", "cocktail-detail", "panier", "page_identification"])) {
+					include($_GET['page'].".php");
+				}
+			}
+			?>
 		</main>
 
 		<footer>
