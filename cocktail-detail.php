@@ -40,7 +40,7 @@
     ?>
     <img  
         src="<?php 
-        if (isset($_SESSION["MesRecette"][$cocktailId]))
+        if (!isset($_SESSION["MesRecettes"][strval($cocktailId)]))
             echo "icons/herz_icon.png";
         else
             echo "icons/coeur_rouge_icon.png";
