@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $("#login").blur(function() {
-        $.get("checkLogin.php?login="+$("#login").val(),
+        $.get("loginDisponible.php?login="+$("#login").val(),
             function(data) {
                 $("#loginIndisponible").html(data);
             }
@@ -8,13 +8,17 @@ $(document).ready(function() {
     })
 });
 
+
+//fonctions du fichier cocktail-detail.php
 function preferer(queryString) {
-    if (document.getElementById("coeur_icon").src.endsWith("icons/herz_icon.png")) { // non préféré
+    // non préféré au début
+    if (document.getElementById("coeur_icon").src.endsWith("icons/herz_icon.png")) { 
         document.getElementById("coeur_icon").src = "icons/coeur_rouge_icon.png";
         document.getElementById("coeur_icon").title = "enlever cette recette de mes recettes préférées";
         modifierPreference(queryString, "ajouter");
     }
-    else { // préféré
+    // préféré
+    else { 
         document.getElementById("coeur_icon").src = "icons/herz_icon.png";
         document.getElementById("coeur_icon").title = "ajouter cette recette à mes recettes préférées";
         modifierPreference(queryString, "enlever");
@@ -30,7 +34,9 @@ function modifierPreference(queryString, action) {
     }
 }
 
-// fonctiions du fichier identification_form.php
+
+
+// fonctions du fichier identification_form.php
 function compte(){
     window.location.href = "?page=page_creation";
 }

@@ -18,6 +18,7 @@
 			}
 		}
 	} else {
+		include 'modifierUtilisateur.php';
 		echo "Vous vous êtes déjà connecté!";
 		unset($_SESSION['utilisateur']);
 		//echo "A partir de maintenant, vous n'êtes plus connecté.";

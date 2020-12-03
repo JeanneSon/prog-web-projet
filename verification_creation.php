@@ -106,12 +106,14 @@ if (isset($_POST['submit'])) {
 	
 	if (isset($_POST['telephone'])) {
 		$trimmedTelephone = trim($_POST['telephone']);
-		if (preg_match("#([0-9]{2}){5}#", $trimmedTelephone)) {
+		if (!$trimmedTelephone == "") {
+			if (preg_match("#([0-9]{2}){5}#", $trimmedTelephone)) {
 			$telephone = $trimmedTelephone;
-		}
-		else {
-			$ChampsIncorrects['Numéro de telephone'] = 'Numéro de telephone';
-			$ClassTelephone = 'error';
+			}
+			else {
+				$ChampsIncorrects['Numéro de telephone'] = 'Numéro de telephone';
+				$ClassTelephone = 'error';
+			}
 		}
 	}
 

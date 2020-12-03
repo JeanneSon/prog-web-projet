@@ -1,9 +1,11 @@
 <?php
 session_start();
-$_SESSION["MesRecettes"] = [
-	"3" => 3, 
-	"10" => 10,
-	"7" => 7];
+if (!isset($_SESSION["MesRecettes"])) {
+	$_SESSION["MesRecettes"] = [
+		"3" => 3, 
+		"10" => 10,
+		"7" => 7];
+}
 include("Donnees.inc.php");
 $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
 ?>
@@ -69,7 +71,10 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	</div>
 	<div id="main">
 		<header>
-			<h1> <a href="index.php">Cocktails</a></h1>
+
+			<h1><a href="index.php">Cocktails</a></h1>
+
+			<!-- Bienvenue à l'utilisateur -->
 			<h2>Bienvenue
 			<?php 
 			if (isset($_SESSION["utilisateur"])) {
@@ -77,12 +82,15 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			} else echo "! Vous n'êtes pas encore connecté.";
 			?>
 			</h2>
+
+			<!-- Icons en haut à droite -->
 			<a href="?page=panier">
 				<img src="icons/sac.svg" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 			</a>
 			<a href="?page=page_identification">
 				<img src="icons/compte_icon.png" alt="compte icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
 			</a>
+
 		</header>
 
 
@@ -92,19 +100,22 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 		
 		<main>
 			<div id="rechercheRecettes">
-			<div class = "ui-widget">
-			<h3> Recherche des cocktail par une zone de saisie</h3>
-				<label for = "automplete-1">Ingredients souhaitées: </label>
-				<input id = "automplete-1">
-				<label for = "automplete-2">Ingredients non-souhaitées: </label>
-				<input id = "automplete-2">
+				<div class = "ui-widget">
+					<h3> Recherche des cocktail par une zone de saisie</h3>
+					<label for = "automplete-1">Ingredients souhaitées: </label>
+					<input id = "automplete-1">
+					<label for = "automplete-2">Ingredients non-souhaitées: </label>
+					<input id = "automplete-2">
+				</div>
+				<div id="recherche">
+					<h3> Recherche de cocktails par une liste</h3>
+					<?php 
+						include 'liste_ingredients.php';  
+					?>
+				</div>
 			</div>
-			<div id="recherche">
-			<h3> Recherche de cocktails par une liste</h3>
-			<?php 
-				include 'liste_ingredients.php';  ?>
-				</div> </div> 
-				<div id=rest><?php
+			<div id=rest>
+				<?php
 				//if (!isset($_GET['page'])) $_GET['page'] = 'index';
 				// L'utilisateur accède-t-il à une page autorisée
 				if (isset($_GET['page'])) {
@@ -115,11 +126,12 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 						//include($_GET['page'] . ".php");
 					}
 				}else {include 'liste_cocktails.php';}
-			?></div>
+				?>
+			</div>
 			
 		</main>
 
-		<footer>
+		<!-- <footer>
 			<hr />
 			<p style="margin:0;display:inline;float:left"><u>Impressum</u><br />
 				Projet L3 ISFATES <br />
@@ -131,7 +143,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 				hanna.schall8@etu.univ-lorraine.fr<br />
 				aurianne.venet9@etu.univ-lorraine.fr
 			</p>
-		</footer>
+		</footer> -->
 	</div>
 </body>
 
