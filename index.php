@@ -20,26 +20,6 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script type="text/javascript" src="javascript.js"></script>
-
-	<!-- Javascript -->
-	<script>
-		<?php include("allingredients.php"); ?>
-		$(function() {
-			var ingredients = [<?php echo '"'.implode('","', $simple).'"' ?>];
-			$("#automplete-1").autocomplete({
-				source: ingredients,
-				minLength: 1,
-				delay: 500,
-				autoFocus: true
-			});
-			$("#automplete-2").autocomplete({
-				source: ingredients,
-				minLength: 1,
-				delay: 500,
-				autoFocus: true
-			});
-		});
-	</script>
 </head>
 
 
@@ -61,12 +41,13 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			document.getElementById("affichage").src = elem;
 		}
 	</script>
+
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<a href="?page=panier">Cocktails préférés</a>
 		<a href="?page=page_identification">Créer un compte</a>
-		<a href="?page=contact">Contact</a>
 	</div>
+
 	<div id="main">
 		<header>
 			<h1> <a href="index.php">Cocktails</a></h1>
@@ -91,30 +72,17 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 		</div>
 		
 		<main>
-			<div id="rechercheRecettes">
-			<div class = "ui-widget">
-			<h3> Recherche des cocktail par une zone de saisie</h3>
-				<label for = "automplete-1">Ingredients souhaitées: </label>
-				<input id = "automplete-1">
-				<label for = "automplete-2">Ingredients non-souhaitées: </label>
-				<input id = "automplete-2">
-			</div>
-			<div id="recherche">
-			<h3> Recherche de cocktails par une liste</h3>
-			<?php 
-				include 'liste_ingredients.php';  ?>
-				</div> </div> 
 				<div id=rest><?php
 				//if (!isset($_GET['page'])) $_GET['page'] = 'index';
 				// L'utilisateur accède-t-il à une page autorisée
 				if (isset($_GET['page'])) {
-					if (in_array($_GET['page'], ['index', 'contact', 'panier', 'page_identification', 'page_creation', 'liste'])) {
-						if (($_GET['page'] == 'index')||($_GET['page'] == 'liste')) {
-							include 'liste_cocktails.php';
-						}
-						//include($_GET['page'] . ".php");
+					if (in_array($_GET['page'], ['index', 'contact', 'panier', 'page_identification', 'page_creation', 'recherche'])) {
+						//if (($_GET['page'] == 'index')||($_GET['page'] == 'liste')) {
+						//	include 'liste_cocktails.php';
+						//}
+						include($_GET['page'] . ".php");
 					}
-				}else {include 'liste_cocktails.php';}
+				}else {include 'recherche.php';}
 			?></div>
 			
 		</main>

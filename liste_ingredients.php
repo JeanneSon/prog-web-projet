@@ -17,15 +17,15 @@
             if (null !== generationliste($ingredient)) {
                 $arraydata = generationliste($ingredient);
                 foreach ($arraydata as $data){
-                    echo '<li><a href="?page=liste&liste='.$data.'">'.$data.'</a></li>';   
+                    echo '<li><a href="?page=recherche&recherche='.$data.'">'.$data.'</a></li>';   
                 }
             }
             ?> </ul> <?php
         }
         
         if (isset($_GET['page'])) {
-            if(isset($_GET['liste'])) {
-                $ingredient=$_GET['liste'];
+            if(isset($_GET['recherche'])) {
+                $ingredient=$_GET['recherche'];
                 $filsariane.=" / ".$ingredient;
             }
             echo $filsariane;

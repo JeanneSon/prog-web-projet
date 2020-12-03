@@ -3,4 +3,4 @@
   		$ingredient=$_GET['liste'];
    		echo affichageliste($ingredient);
    	}
-  ?>
+ ?>

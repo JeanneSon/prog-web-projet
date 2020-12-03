@@ -2,8 +2,8 @@
     $choixIngredient = "";
 
     if (isset($_GET['page'])) {
-        if(isset($_GET['liste'])) {
-            $choixIngredient = $_GET['liste'];
+        if(isset($_GET['recherche'])) {
+            $choixIngredient = $_GET['recherche'];
         }
     }
 
