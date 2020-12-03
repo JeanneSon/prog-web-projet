@@ -39,15 +39,16 @@
         }
     ?>
     <img  
-        src="<?php 
+        <?php 
         if (!isset($_SESSION["MesRecettes"][strval($cocktailId)]))
-            echo "icons/herz_icon.png";
+            echo 'src="icons/herz_icon.png"
+                title="ajouter cette recette à mes recettes préférées"';
         else
-            echo "icons/coeur_rouge_icon.png";
-        ?>"
+            echo 'src="icons/coeur_rouge_icon.png"
+            title="enlever cette recette de mes recettes préférées"';
+        ?>
         alt="coeur icon"
         id="coeur_icon"
-        title="ajouter cette recette à mes recettes préférées"
         onClick="preferer(window.location.search)"
         style="width: 40px;height: 40px; top: 10px; right: 10px; ">
     <span id="spanning-ingredients">

@@ -1,9 +1,11 @@
 <?php
 session_start();
-$_SESSION["MesRecettes"] = [
-	"3" => 3, 
-	"10" => 10,
-	"7" => 7];
+if (!isset($_SESSION["MesRecettes"])) {
+	$_SESSION["MesRecettes"] = [
+		"3" => 3, 
+		"10" => 10,
+		"7" => 7];
+}
 include("Donnees.inc.php");
 $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
 ?>
@@ -52,7 +54,10 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 
 	<div id="main">
 		<header>
-			<h1> <a href="index.php">Cocktails</a></h1>
+
+			<h1><a href="index.php">Cocktails</a></h1>
+
+			<!-- Bienvenue à l'utilisateur -->
 			<h2>Bienvenue
 			<?php 
 			if (isset($_SESSION["utilisateur"])) {
@@ -60,12 +65,15 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			} else echo "! Vous n'êtes pas encore connecté.";
 			?>
 			</h2>
+
+			<!-- Icons en haut à droite -->
 			<a href="?page=panier">
 				<img src="icons/sac.svg" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 			</a>
 			<a href="?page=page_identification">
 				<img src="icons/compte_icon.png" alt="compte icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
 			</a>
+
 		</header>
 
 
@@ -83,7 +91,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			?>
 		</main>
 
-		<footer>
+		<!-- <footer>
 			<hr />
 			<p style="margin:0;display:inline;float:left"><u>Impressum</u><br />
 				Projet L3 ISFATES <br />
@@ -95,7 +103,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 				hanna.schall8@etu.univ-lorraine.fr<br />
 				aurianne.venet9@etu.univ-lorraine.fr
 			</p>
-		</footer>
+		</footer> -->
 	</div>
 </body>
 
