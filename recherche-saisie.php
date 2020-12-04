@@ -36,7 +36,9 @@
         	echo '<li><a href="?page=cocktail-detail&cocktailId='.$index.'"">'.$Recettes[$index]["titre"].'</a></li>';
     	}
     } else {
-    	echo 'Malheureusement aucune recette ne correspond à votre demande, nous vous proposons celles ci: <br>';
+        if ( (isset($ingredient)) || (isset($nonIngredient)) ){
+    	   echo 'Malheureusement aucune recette ne correspond à votre demande, nous vous proposons celles ci: <br>';
+        }
     	if (isset($ingredient)){
     		echo 'Avec '.$ingredient;
     		foreach($recettesCorrespondants as $index) {
