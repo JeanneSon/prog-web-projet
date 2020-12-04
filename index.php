@@ -1,13 +1,6 @@
 <?php
 //TODO: do not always request user data
 session_start();
-/* if (!isset($_SESSION["MesRecettes"])) {
-	$_SESSION["MesRecettes"] = [
-		"3" => 3, 
-		"10" => 10,
-		"7" => 7
-	];
-} */
 include("Donnees.inc.php");
 $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
 ?>

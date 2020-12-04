@@ -12,6 +12,7 @@ if (isset($_POST["action"])) {
             $reponse = "erreur";
         } else {
             unset($_SESSION["utilisateur"]);
+            unset($_SESSION["MesRecettes"]);
             $reponse = "index.php";
         }
     } else if ($action == "modification") {
@@ -73,5 +74,28 @@ if (isset($_POST["connecte"])) {
     } else {
         echo "non connecté";
     }
+}
+
+/**
+ * checker si la combinaison de login et mot de passe est valide
+ * si oui : renvoyer "ok"
+ * si non : renvoyer "erreur"
+ */
+if (isset($_POST["login"]) && isset($_POST["mdp"])) {
+    $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
+    header('Content-type: text/html; charset=iso-8859-1');
+    $reponse = "erreur";
+    if (array_key_exists($_POST["login"], $utilisateurs) && array_key_exists("mdp", $utilisateurs[$_POST["login"]])) {
+        if ($utilisateurs[$_POST["login"]]["mdp"] == $_POST["mdp"]) {
+            $reponse = "ok";
+            $_SESSION['utilisateur'] = $_POST["login"];
+            if (isset($_SESSION["MesRecettes"])) {
+                $utilisateurs[$_SESSION["utilisateur"]]["recettes"] = array_merge($_SESSION["MesRecettes"], $utilisateurs[$_SESSION["utilisateur"]]["recettes"]);
+                file_put_contents("DonneesUtilisateurs.json", json_encode($utilisateurs), LOCK_EX);
+            }
+            $_SESSION["MesRecettes"] = $utilisateurs[$_SESSION["utilisateur"]]["recettes"];
+        }
+    }
+    echo $reponse;
 }
 ?>
