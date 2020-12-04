@@ -1,3 +1,4 @@
+
 <script>
     function validerCompte(){
         var sexe = "notSet";
@@ -38,8 +39,8 @@
     
 
 </script>
-
-<h1>Vos données</h1>
+<div id="rest">
+<h2>Vos données</h2>
 
 <form method="post" action="#" >
 <fieldset>
@@ -101,4 +102,5 @@
 </fieldset>
 <br />
     <input type="button" name="button" value="Valider" onclick="validerCompte()"/>
-</form>	
+</form>
+</div>	
