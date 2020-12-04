@@ -54,7 +54,6 @@
         }
     }
 
-    // TODO: check right box in form
     if (isset($_POST['sexe'])) {
         if ($_POST['sexe'] != "notSet") {
             $trimmedSexe = trim($_POST['sexe']);

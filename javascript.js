@@ -1,6 +1,6 @@
 $(function(){
     // checker si l'utilisateur est connecté
-    $.post("getDonneesUtilisateur.php", function(data) {
+    $.post("gestionUtilisateur.php", {connecte: ""}, function(data) {
         if (data != "non connecté") {
             var champs = data.split(";;;");
             champs.forEach(element => {
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-    $.post("getDonneesUtilisateur.php", function(data) {
+    $.post("gestionUtilisateur.php", {connecte: ""}, function(data) {
         if (data == "non connecté") {
             $("#login").blur(function() {
                 $.get("gestionUtilisateur.php?login="+$("#login").val(),
@@ -79,9 +79,7 @@ function preferer(queryString) {
 function modifierPreference(queryString, action) {
     var urlParams = new URLSearchParams(queryString);
     if (urlParams.has('cocktailId')) {
-        $.post("modifierPreference.php", { action: action, cocktailId: urlParams.get('cocktailId')}, function(data) {
-            console.log(data);
-        });
+        $.post("modifierPreference.php", { action: action, cocktailId: urlParams.get('cocktailId')});
     }
 }
 
@@ -106,4 +104,42 @@ function valider() {
             $("#erreur").html("Cette combinaison de login et mot de passe n'existe pas.");
         }
     })
+}
+
+// fonctions du fichier cocktail-detail
+function validerCompte(){
+    var sexe = "notSet";
+    if (document.getElementById("femme").checked) {
+        sexe = $("#femme").val();
+    } else if (document.getElementById("homme").checked) {
+        sexe = $("#homme").val();
+    }
+    console.log(sexe);
+    $.post("verification_compte.php", { 
+            login: $("#login").val(),
+            mdp: $("#mdp").val(),
+            nom: $("#nom").val(),
+            prenom: $("#prenom").val(),
+            sexe: sexe,
+            naissance: $("#naissance").val(),
+            email: $("#email").val(),
+            telephone: $("#telephone").val(),
+            rue: $("#rue").val(),
+            codePostal: $("#codePostal").val(),
+            ville: $("#ville").val()
+        }, function(data) {
+            console.log(data);
+            if (data == "ok") {
+                //modifier
+                alert("Modification prise en compte !");
+                window.location.href = "index.php";
+            } else {
+                var fauxChamps = data.split(";;;");
+                fauxChamps.forEach(champ => {
+                    var identifiant = "#" + champ;
+                    $(identifiant).css("background-color", "red");
+                });
+            }
+        }
+    );
 }

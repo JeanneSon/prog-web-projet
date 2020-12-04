@@ -50,5 +50,28 @@ if (isset($_GET["login"])) {
         echo "Login n'est plus disponible.";
     else
         echo "";
+}
+
+
+/**
+ * checker si l'utilisateur est connecté
+ * si oui : renvoyer les données de l'utilisateur (format: champs:::valeur;;;champs:::valeur)
+ * si non : revoyer "non connecté"
+ */
+if (isset($_POST["connecte"])) {
+    if (isset($_SESSION["utilisateur"])) {
+        $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
+        if (isset($utilisateurs[$_SESSION["utilisateur"]])) {
+            $reponse = ["login...".$_SESSION["utilisateur"]];
+            foreach ($utilisateurs[$_SESSION["utilisateur"]] as $champ => $valeur) {
+                if ($champ != "recettes") {
+                    array_push($reponse, $champ."...".$valeur);
+                }
+            }
+            echo implode(";;;", $reponse);
+        }
+    } else {
+        echo "non connecté";
     }
+}
 ?>
