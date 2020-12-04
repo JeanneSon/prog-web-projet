@@ -29,9 +29,13 @@
     <?php
     include_once("getIngredients.php");
     $recettesCorrespondants = recettesCorrespondants(end($fil));
+    //echo sizeof($recettesCorrespondants);
+    echo '<ul>';
     foreach($recettesCorrespondants as $index) {
         echo '<li><a href="?page=cocktail-detail&cocktailId='.$index.'"">'.$Recettes[$index]["titre"].'</a></li>';
     }
+    echo '</ul>';
+
     ?>
 </div>
 

@@ -1,4 +1,4 @@
-<h2 style="position:absolute;left: 20%; top: 15px;font-size:larger;display: inline;">Cocktails Préférés</h2>
+<div id="rest"><h2>Cocktails Préférés</h2>
 <?php 
 $affichageRecettes = [];
 if (isset($_SESSION["MesRecettes"])) {
@@ -17,4 +17,4 @@ if (!empty($affichageRecettes)) {
     echo "</ul>";
 } else
     echo "<p>Vous n'avez pas encore des cocktails préférés.</p>";
-?>
+?></div>

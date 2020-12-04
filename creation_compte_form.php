@@ -1,4 +1,4 @@
-    <h1>Vos données</h1>
+    <div id="rest"><h2>Vos données</h2>
 
 	<form method="post" action="#" >
 	<fieldset>
@@ -75,4 +75,4 @@
 	<br />
 		<input type="submit" name="submit" value="Valider" />
          
-	</form>	
+	</form>	</div>

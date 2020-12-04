@@ -9,15 +9,15 @@ h1{
 }
 
 h2{
-    position:absolute;
-    left: 60%;
-    top: 15px;
     font-size:larger;
-    display: inline;
 }
 
 h3{
     font-size: medium;
+}
+
+#bienvenue{
+    margin-left:25%;
 }
 
 #iconIdentification{
@@ -44,10 +44,14 @@ h3{
     left: 10px;
 }
 
-
+#footer{
+    margin:20px;
+    padding:50px 0px;
+    position:relative;
+}
 
 #recherche{
-    background-color: rgb(242, 245, 52);
+    background-color: rgb(223, 239, 255);
     min-height: auto;
     padding:20px;
     margin: 50px 10px;
@@ -57,7 +61,7 @@ h3{
     top: 100px;
     margin: 50px 10px;
     padding: 20px;
-    background-color: rgb(248, 182, 60);
+    background-color: rgb(223, 239, 255);
 }
 
 #rechercheRecettes{
@@ -65,8 +69,6 @@ h3{
 }
 
 #rest{
-    display: inline-block;
-    position: absolute;
     margin-top: 50px;
 }
 

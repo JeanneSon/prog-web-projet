@@ -38,20 +38,53 @@ function sousCategories($index) {
     }
     return [];
 }
+//
+function Recursive($ingredient){
+        include("Donnees.inc.php");
+        $ingredientPotentiel = [$ingredient];
+        $ingredientsPotentiels = array_merge($ingredientPotentiel, sousCategories($ingredient));
+        if (!empty(sousCategories($ingredient))) {
+            foreach ( (sousCategories($ingredient)) as $element) {
+                $ingredientsPotentiels = array_merge($ingredientsPotentiels, sousCategories($element));
+                if (!empty(sousCategories($element))) {
+                    foreach ( (sousCategories($element)) as $sousElement) {
+                        $ingredientsPotentiels = array_merge($ingredientsPotentiels, sousCategories($sousElement));
+                        if (!empty(sousCategories($sousElement))) {
+                            foreach ( (sousCategories($sousElement)) as $sousSousElement) {
+                                $ingredientsPotentiels = array_merge($ingredientsPotentiels, sousCategories($sousSousElement));
+                                if (!empty(sousCategories($sousSousElement))) {
+                                    foreach ( (sousCategories($sousSousElement)) as $finalElement) {
+                                        $ingredientsPotentiels = array_merge($ingredientsPotentiels, sousCategories($finalElement));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            $ingredientsPotentielsFinal = array_unique($ingredientsPotentiels);
+            return $ingredientsPotentielsFinal;
+        }
+        $ingredientsPotentielsFinal = array_unique($ingredientsPotentiels);
+        return $ingredientsPotentielsFinal;
+    }
 
 // afficher les recettes correspondants
 function recettesCorrespondants($ingredient) {
     include("Donnees.inc.php");
-    $ingredientsPotentiels = [$ingredient];
-    array_merge($ingredientsPotentiels, sousCategories($ingredient));
+    $ingredientsPotentiels = Recursive($ingredient);
     $resultat = [];
-    foreach ($Recettes as $index => $r) {
-        foreach ($r["index"] as $i) {
-            if ($i == $ingredient) {
-                array_push($resultat, $index);
+    foreach ($ingredientsPotentiels as $ingredientPotentiel){
+        foreach ($Recettes as $index => $r) {
+            foreach ($r["index"] as $i) {
+                if ($i == $ingredientPotentiel) {
+                    array_push($resultat, $index);
+                }
             }
         }
     }
-    return $resultat;
+    $recettesCorrespondantes = array_unique($resultat);
+    return $recettesCorrespondantes;
 }
 ?>
