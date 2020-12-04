@@ -44,7 +44,11 @@ h3{
     left: 10px;
 }
 
-
+#footer{
+    margin:20px;
+    padding:50px 0px;
+    position:relative;
+}
 
 #recherche{
     background-color: rgb(242, 245, 52);

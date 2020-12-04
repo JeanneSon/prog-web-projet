@@ -99,7 +99,8 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			?>
 		</main>
 
-		<!-- <footer>
+		<div id="footer">
+		<footer>
 			<hr />
 			<p style="margin:0;display:inline;float:left"><u>Impressum</u><br />
 				Projet L3 ISFATES <br />
@@ -111,7 +112,8 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 				hanna.schall8@etu.univ-lorraine.fr<br />
 				aurianne.venet9@etu.univ-lorraine.fr
 			</p>
-		</footer> -->
+		</footer>
+		</div>
 	</div>
 </body>
 
