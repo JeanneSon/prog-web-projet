@@ -87,4 +87,24 @@ function recettesCorrespondants($ingredient) {
     $recettesCorrespondantes = array_unique($resultat);
     return $recettesCorrespondantes;
 }
+
+function rechercheIngredient($rechercher) {
+    include("Donnees.inc.php");
+    $result = false;
+    foreach ($Hierarchie as $key => $innerArray) {
+        $all[] = $key; //ligne 1470
+        if (is_array($innerArray)) {//1471
+            foreach ($innerArray as $superEtSous => $innerInnerArray) {
+                if(is_array($innerInnerArray)) {
+                    foreach ($innerInnerArray as $ingredient) {
+                        if ($rechercher == $ingredient){
+                            $result = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return $result;
+}
 ?>
