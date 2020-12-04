@@ -1,11 +1,12 @@
 <script>
     function validerCompte(){
         var sexe = "notSet";
-        if ($("#femme").checked) {
+        if (document.getElementById("femme").checked) {
             sexe = $("#femme").val();
-        } else if ($("#homme").checked) {
+        } else if (document.getElementById("homme").checked) {
             sexe = $("#homme").val();
         }
+        console.log(sexe);
         $.post("verification_compte.php", { 
                 login: $("#login").val(),
                 mdp: $("#mdp").val(),
@@ -65,7 +66,7 @@
     <br />
 
     Vous êtes :  
-    <span id="mdp">
+    <span id="sexe">
         <input type="radio" name="sexe" value="f" id="femme"/> une femme 	
         <input type="radio" name="sexe" value="h" id="homme"/> un homme
     </span>

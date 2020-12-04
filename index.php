@@ -1,13 +1,13 @@
 <?php
 //TODO: do not always request user data
 session_start();
-if (!isset($_SESSION["MesRecettes"])) {
+/* if (!isset($_SESSION["MesRecettes"])) {
 	$_SESSION["MesRecettes"] = [
 		"3" => 3, 
 		"10" => 10,
 		"7" => 7
 	];
-}
+} */
 include("Donnees.inc.php");
 $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
 ?>
@@ -72,7 +72,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			<a href="?page=panier">
 				<img src="icons/sac.svg" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 			</a>
-			<a href="?page=page_identification">
+			<a href="?page=utilisateurOptions">
 				<img src="icons/compte_icon.png" alt="compte icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
 			</a>
 
@@ -92,7 +92,8 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 					"cocktail-detail", 
 					"panier", 
 					"page_identification",
-					"compte-detail"])) {
+					"compte-detail",
+					"utilisateurOptions"])) {
 					include($_GET['page'].".php");
 				}
 			}

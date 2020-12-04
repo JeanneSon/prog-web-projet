@@ -56,7 +56,7 @@
 
     // TODO: check right box in form
     if (isset($_POST['sexe'])) {
-        if (!$_POST['sexe'] == "notSet") {
+        if ($_POST['sexe'] != "notSet") {
             $trimmedSexe = trim($_POST['sexe']);
             if ($trimmedSexe == "f" || $trimmedSexe == "h") {
                 $sexe = $trimmedSexe;
@@ -137,6 +137,10 @@
             }
         }
         $_SESSION["utilisateur"] = $login;
+        $recettesSession = [];
+        if (isset($_SESSION["MesRecettes"])) {
+            $recettesSession = $_SESSION["MesRecettes"];
+        }
         $utilisateurs[$login] = [
             "mdp" => $mdp,
             "nom" => $nom,
@@ -148,7 +152,7 @@
             "rue" => $rue,
             "codePostal" => $codePostal,
             "ville" => $ville,
-            "recettes" => $_SESSION["MesRecettes"] 
+            "recettes" => $recettesSession
         ];
         file_put_contents("DonneesUtilisateurs.json", json_encode($utilisateurs), LOCK_EX);
         echo "ok";

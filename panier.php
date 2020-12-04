@@ -1,6 +1,9 @@
 <h2 style="position:absolute;left: 20%; top: 15px;font-size:larger;display: inline;">Cocktails Préférés</h2>
 <?php 
-$affichageRecettes = $_SESSION["MesRecettes"];
+$affichageRecettes = [];
+if (isset($_SESSION["MesRecettes"])) {
+    $affichageRecettes = $_SESSION["MesRecettes"];
+}
 if (isset($_SESSION["utilisateur"])) {
     $affichageRecettes  = array_unique(array_merge($affichageRecettes, $utilisateurs[$_SESSION["utilisateur"]]["recettes"]));
 }

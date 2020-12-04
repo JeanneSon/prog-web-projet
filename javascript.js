@@ -1,13 +1,22 @@
 $(function(){
     // checker si l'utilisateur est connecté
     $.post("getDonneesUtilisateur.php", function(data) {
-        var champs = data.split(";;;");
-        champs.forEach(element => {
-            var [champ, valeur] = element.split("...");
-            var identifiant = "#" + champ;
-            $(identifiant).val(valeur);
-        });
-    })
+        if (data != "non connecté") {
+            var champs = data.split(";;;");
+            champs.forEach(element => {
+                var [champ, valeur] = element.split("...");
+                if (champ == "sexe") {
+                    if (valeur == "f") {
+                        document.getElementById("femme").checked = true;
+                    } else if (valeur == "h") {
+                        document.getElementById("homme").checked = true;
+                    }
+                }
+                var identifiant = "#" + champ;
+                $(identifiant).val(valeur);
+            });
+        }
+    });
 });
 
 
@@ -39,7 +48,7 @@ $(document).ready(function() {
     $.post("getDonneesUtilisateur.php", function(data) {
         if (data == "non connecté") {
             $("#login").blur(function() {
-                $.get("loginDisponible.php?login="+$("#login").val(),
+                $.get("gestionUtilisateur.php?login="+$("#login").val(),
                     function(data) {
                         $("#loginIndisponible").html(data);
                     }
@@ -79,8 +88,8 @@ function modifierPreference(queryString, action) {
 
 
 // fonctions du fichier identification_form.php
-function compte(){
-    window.location.href = "?page=page_creation";
+function redirectCreationCompte(){
+    window.location.href = "?page=compte-detail";
 }
 
 function valider() {
