@@ -58,10 +58,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 		<header>
 
 			<h1><a href="index.php">Cocktails</a></h1>
-			<p id="rest">Ce site vous aidera à trouver vos cocktails préférés !<br />
-			Pour la recherche, vous pouvez utiliser soit une liste hierarchique, soit des zoses de saisie! <br />
-			Vous trouverez les deux dans le menu à gauche.<br /><br />
-			Amusez-vous bien!</p>
+			
 			<!-- Bienvenue à l'utilisateur -->
 			<h2 id="bienvenue">Bienvenue
 			<?php 
@@ -70,7 +67,10 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			} else echo "! Vous n'êtes pas encore connecté.";
 			?>
 			</h2>
-
+			<p id="rest">Ce site vous aidera à trouver vos cocktails préférés !<br />
+			Pour la recherche, vous pouvez utiliser soit une liste hierarchique, soit des zoses de saisie! <br />
+			Vous trouverez les deux dans le menu à gauche.<br /><br />
+			Amusez-vous bien!</p>
 			<!-- Icons en haut à droite -->
 			<a href="?page=panier">
 				<img src="icons/sac.svg" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">

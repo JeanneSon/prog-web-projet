@@ -51,7 +51,7 @@ h3{
 }
 
 #recherche{
-    background-color: rgb(242, 245, 52);
+    background-color: rgb(223, 239, 255);
     min-height: auto;
     padding:20px;
     margin: 50px 10px;
@@ -61,7 +61,7 @@ h3{
     top: 100px;
     margin: 50px 10px;
     padding: 20px;
-    background-color: rgb(248, 182, 60);
+    background-color: rgb(223, 239, 255);
 }
 
 #rechercheRecettes{
