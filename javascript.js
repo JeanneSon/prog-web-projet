@@ -24,13 +24,19 @@ $(function(){
 $(document).ready(function() {
     $.get("getIngredients.php", { type: "all"}, function(data) {
         var ingredients = data.split(",");
-        $("#automplete-1").autocomplete({
+        $("#autocomplete-1").autocomplete({
             source: ingredients,
             minLength: 1,
             delay: 500,
             autoFocus: true
         });
-        $("#automplete-2").autocomplete({
+        $("#autocomplete-2").autocomplete({
+            source: ingredients,
+            minLength: 1,
+            delay: 500,
+            autoFocus: true
+        });
+        $("#autocomplete-3").autocomplete({
             source: ingredients,
             minLength: 1,
             delay: 500,

@@ -2,10 +2,12 @@
 	<fieldset>
 	<div class = "ui-widget">
     	<h3>Recherche des cocktails par une zone de saisie</h3>
-    	<label for = "automplete-1">Ingredients souhaitées: </label>
-    		<input name = "autocomplete-1" id = "automplete-1" value="<?php if(isset($_POST['autocomplete-1']))  echo $_POST['autocomplete-1']; ?>">
-    	<label for = "automplete-2">Ingredients non-souhaitées: </label>
-    		<input name = "autocomplete-2" id = "automplete-2" value="<?php if(isset($_POST['autocomplete-2']))  echo $_POST['autocomplete-2']; ?>">
+    	<label for = "autocomplete-1">Ingredients souhaitées: </label>
+    		<input name = "autocomplete-1" id = "autocomplete-1" value="<?php if(isset($_POST['autocomplete-1']))  echo $_POST['autocomplete-1']; ?>">
+        <label for = "autocomplete-3">Ingredients souhaitées: </label>
+            <input name = "autocomplete-3" id = "autocomplete-3" value="<?php if(isset($_POST['autocomplete-3']))  echo $_POST['autocomplete-3']; ?>">   
+    	<label for = "autocomplete-2">Ingredients non-souhaitées: </label>
+    		<input name = "autocomplete-2" id = "autocomplete-2" value="<?php if(isset($_POST['autocomplete-2']))  echo $_POST['autocomplete-2']; ?>">
 	</div>
 		<input type="submit" name="submit" value="Valider" />
 	</fieldset>		
@@ -18,18 +20,37 @@
     echo '<ul>';
     if ( (isset($_POST['autocomplete-1'])) && ((trim($_POST['autocomplete-1'])) != "") ){
     	$ingredient = trim($_POST['autocomplete-1']);
-        //if (rechercheIngredient($ingredient)) {
     	   $recettesCorrespondants = recettesCorrespondants($ingredient);
     	   if ( (isset($_POST['autocomplete-2'])) && ((trim($_POST['autocomplete-2'])) != "") ){
     		  $nonIngredient = trim($_POST['autocomplete-2']);
                 if (rechercheIngredient($nonIngredient)) {
     		        $recettesNonCorrespondantes = recettesCorrespondants($nonIngredient);
     		        $recettefinales = array_diff($recettesCorrespondants, $recettesNonCorrespondantes);
+                    if ( (isset($_POST['autocomplete-3'])) && ((trim($_POST['autocomplete-3'])) != "") ){
+                        $supIngredient = trim($_POST['autocomplete-3']);
+                        if (rechercheIngredient($supIngredient)) {
+                            $recettesCorrespondantsSup = recettesCorrespondants($supIngredient);
+                            $recettefinales = array_intersect($recettefinales, $recettesCorrespondantsSup);
+                        } else {
+                            $mauvaisIngredient = true;
+                            echo $supIngredient." n'est pas un ingrédient valide. Veuillez en selectionner un nouveau. <br>";
+                        }
+                    }
                 } else {
                     $mauvaisIngredient = true;
                     echo $nonIngredient." n'est pas un ingrédient valide. Veuillez en selectionner un nouveau. <br>";
                 }
-    	    } else {
+            }
+            if ( (isset($_POST['autocomplete-3'])) && ((trim($_POST['autocomplete-3'])) != "") ){
+                $supIngredient = trim($_POST['autocomplete-3']);
+                if (rechercheIngredient($supIngredient)) {
+                    $recettesCorrespondantsSup = recettesCorrespondants($supIngredient);
+                    $recettefinales = array_intersect($recettesCorrespondantsSup, $recettesCorrespondants);
+                } else {
+                    $mauvaisIngredient = true;
+                    echo $supIngredient." n'est pas un ingrédient valide. Veuillez en selectionner un nouveau. <br>";
+                }
+            }else {
                 $recettefinales = $recettesCorrespondants;
             } if (!rechercheIngredient($ingredient)) {
                 $mauvaisIngredient = true;
