@@ -1,5 +1,5 @@
-
-<h2 style="position:absolute;left: 20%; top: 15px;font-size:larger;display: inline;">Vos données</h2>
+<div id="rest">
+<h2 >Vos données</h2>
 
 <form action="#" method="post">
 	<fieldset>
@@ -22,4 +22,4 @@
 	<br />
 	<input type="button" name="submit" value="Valider" onclick="valider()"/>
 		
-</form>	
+</form>	</div>
