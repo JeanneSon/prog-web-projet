@@ -30,7 +30,7 @@ if (isset($_POST["action"])) {
             }
         }
     } else if ($action == "connexion") {
-        $reponse = "index.php?page=page_identification";
+        $reponse = "index.php?page=identification_form";
     } else if ($action == "creation") {
         $reponse = "index.php?page=compte-detail";
     } 

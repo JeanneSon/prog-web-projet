@@ -94,7 +94,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 					"recherche-saisie", 
 					"cocktail-detail", 
 					"panier", 
-					"page_identification",
+					"identification_form",
 					"compte-detail",
 					"utilisateurOptions"])) {
 					include($_GET['page'].".php");
