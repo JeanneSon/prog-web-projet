@@ -7,9 +7,9 @@ if (isset($_POST["action"])) {
         $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
         if ($_POST["action"] == "ajouter") {
             if ((isset($_SESSION["utilisateur"])) && (!isset($utilisateurs[$_SESSION["utilisateur"]]["recettes"][$cocktailId]))) {
-                $utilisateurs[$_SESSION["utilisateur"]]["recettes"][strval($cocktailId)] = $cocktailId;
+                $utilisateurs[$_SESSION["utilisateur"]]["recettes"][$cocktailId] = $cocktailId;
             }
-            $_SESSION["MesRecettes"][strval($cocktailId)] = $cocktailId;
+            $_SESSION["MesRecettes"][$cocktailId] = $cocktailId;
         }
         else if ($_POST["action"] == "enlever") {
             if (isset($_SESSION["utilisateur"]) && (isset($utilisateurs[$_SESSION["utilisateur"]]["recettes"][$cocktailId]))) {

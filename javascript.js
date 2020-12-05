@@ -74,7 +74,7 @@ function preferer(queryString) {
         document.getElementById("coeur_icon").title = "enlever cette recette de mes recettes préférées";
         modifierPreference(queryString, "ajouter");
     }
-    // préféré
+    // préféré au début
     else { 
         document.getElementById("coeur_icon").src = "icons/herz_icon.png";
         document.getElementById("coeur_icon").title = "ajouter cette recette à mes recettes préférées";
@@ -99,12 +99,11 @@ function redirectCreationCompte(){
 function valider() {
     var login = $("input[name='login']").val().trim();
     var mdp = $("input[name='mdp']").val().trim();
-    $.post("identification_traitement.php", {login: login, mdp: mdp}, function(data) {
+    $.post("gestionUtilisateur.php", {login: login, mdp: mdp}, function(data) {
         if (data == "ok") {
             window.location.href = "index.php";
         }
         else {
-            $("input[name='login']").val(data);
             $("input[name='login']").css("background-color", "red");
             $("input[name='mdp']").css("background-color", "red");
             $("#erreur").html("Cette combinaison de login et mot de passe n'existe pas.");
