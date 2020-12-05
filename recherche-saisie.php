@@ -78,15 +78,15 @@
     	    echo 'Malheureusement aucune recette ne correspond à votre demande, nous vous proposons celles ci: <br>';
     	    if ((trim($_POST['autocomplete-1'])) != ""){
                 if ((trim($_POST['autocomplete-2'])) != ""){
-    	           echo 'Avec '.$ingredient.' et sans '.$nonIngredient;
                    $recettefinales = array_diff($recettesCorrespondants, $recettesNonCorrespondantes);
+                   if (!empty($recettefinales)) {echo 'Avec '.$ingredient.' et sans '.$nonIngredient;}
     		       foreach($recettefinales as $index) {
         	           echo '<li><a href="?page=cocktail-detail&cocktailId='.$index.'"">'.$Recettes[$index]["titre"].'</a></li>';
     		        }
                 }
                 if ((trim($_POST['autocomplete-3'])) != ""){
-                   echo 'Avec '.$ingredient.' et '.$supIngredient;
                    $recettefinales = array_intersect($recettesCorrespondantsSup, $recettesCorrespondants);
+                   if (!empty($recettefinales)) {echo 'Avec '.$ingredient.' et '.$supIngredient;}
                    foreach($recettefinales as $index) {
                        echo '<li><a href="?page=cocktail-detail&cocktailId='.$index.'"">'.$Recettes[$index]["titre"].'</a></li>';
                     }
@@ -101,8 +101,8 @@
     	    }
     	    if ((trim($_POST['autocomplete-2'])) != ""){
                 if ((trim($_POST['autocomplete-3'])) != ""){
-                   echo 'Avec '.$supIngredient.' et sans '.$nonIngredient;
                    $recettefinales = array_diff($recettesCorrespondantsSup, $recettesNonCorrespondantes);
+                   if (!empty($recettefinales)) {echo 'Avec '.$supIngredient.' et sans '.$nonIngredient;}
                    foreach($recettefinales as $index) {
                        echo '<li><a href="?page=cocktail-detail&cocktailId='.$index.'"">'.$Recettes[$index]["titre"].'</a></li>';
                     }
