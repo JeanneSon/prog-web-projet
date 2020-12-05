@@ -1,5 +1,4 @@
 <?php
-//TODO: do not always request user data
 session_start();
 include("Donnees.inc.php");
 $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true);
