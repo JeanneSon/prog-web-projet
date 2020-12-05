@@ -21,6 +21,7 @@ $(function(){
 
 
 // fonctions de la page recherche-saisie.php
+// permet de générer la liste de suggestion 
 $(document).ready(function() {
     $.get("getIngredients.php", { type: "all"}, function(data) {
         var ingredients = data.split(",");

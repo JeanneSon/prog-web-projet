@@ -38,7 +38,7 @@ function sousCategories($index) {
     }
     return [];
 }
-//
+//retourne tout les ingredients qui apartiennent à une catégories par accés à toutes les sous categories
 function Recursive($ingredient){
         include("Donnees.inc.php");
         $ingredientPotentiel = [$ingredient];
@@ -88,6 +88,7 @@ function recettesCorrespondants($ingredient) {
     return $recettesCorrespondantes;
 }
 
+//verifie qu'un ingredient fait partie de la hierarchie
 function rechercheIngredient($rechercher) {
     include("Donnees.inc.php");
     $result = false;

@@ -64,6 +64,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			Pour la recherche, vous pouvez utiliser soit une liste hierarchique, soit des zoses de saisie! <br />
 			Vous trouverez les deux dans le menu à gauche.<br /><br />
 			Amusez-vous bien!</p>
+
 			<!-- Icons en haut à droite -->
 			<a href="?page=panier">
 				<img src="icons/sac.svg" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
@@ -81,6 +82,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 		
 		<main>
 			<?php
+			//include les parties dans le main
 			if (isset($_GET["page"])) {
 				if (in_array($_GET["page"], [
 					"recherche-liste", 

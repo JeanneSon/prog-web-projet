@@ -1,12 +1,12 @@
 <?php
     $choixIngredient = "";
-
+    //recuperation de l'ingredient choisi
     if (isset($_GET['page'])) {
         if(isset($_GET['recherche'])) {
             $choixIngredient = $_GET['recherche'];
         }
     }
-
+    //génération de la liste des index de cocktails qui ont cet ingrédient
     $allcocktailsIngredients = array();
     $allcocktailsKeys[] = array();
     foreach ($Recettes as $key => $innerArray) {
@@ -25,8 +25,7 @@
             }
         }
     }
-    //print_r($allcocktailsKeys);
-
+    //génération de la liste cliquable des cocktails
     foreach ($Recettes as $key => $innerArray) {
         ?> <ul> <?php
         foreach($allcocktailsKeys as $element => $innerElement){
@@ -40,9 +39,4 @@
         }   
         ?> </ul> <?php
     }
-
-    //$cocktailsIngredients = implode("<br>", $allcocktailsIngredients);
-    //echo $cocktailsIngredients;
-
-    
     ?>
