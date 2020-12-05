@@ -1,11 +1,27 @@
-*{
+body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+html{
+    background-image: url("images/background2.png");
+    background-position:0px 0px;
+    background-repeat: repeat;
+}
+
+#footer{
+    margin:20px;
+    padding:50px 0px;
+    position:relative;
+}
+
+/*titres*/
 h1{
     position: absolute;
     left: 60px;
     top: 0px;
+}
+h1 a:visited{
+    color:black;
 }
 
 h2{
@@ -19,6 +35,37 @@ h3{
 #bienvenue{
     margin-left:25%;
 }
+
+/* Buttons */
+#myButton{
+    width:auto;
+    height: auto;
+    box-shadow: 0px 10px 14px -7px #0c0a0a;
+	background:linear-gradient(to bottom, #979b9c 5%, #777878 100%);
+	background-color:#979b9c;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#0c0a0a;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:5px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #6b6b6b;
+}
+
+
+.myButton:hover {
+	background:linear-gradient(to bottom, #777878 5%, #979b9c 100%);
+	background-color:#777878;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+/*icones*/
 
 #iconIdentification{
     position: absolute; 
@@ -44,32 +91,30 @@ h3{
     left: 10px;
 }
 
-#footer{
-    margin:20px;
-    padding:50px 0px;
-    position:relative;
-}
+/*differentes parties du site*/
 
+
+/*recherche par une liste*/
 #recherche{
-    background-color: rgb(223, 239, 255);
+    background-color: rgb(235, 235, 235, .7);
     min-height: auto;
     padding:20px;
-    margin: 50px 10px;
+    margin: 50px 70px;
 }
 
+#recherche ul{
+    
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+}
+
+/*recherche par une zone de saisie*/
 .ui-widget{
     top: 100px;
     margin: 50px 10px;
     padding: 20px;
-    background-color: rgb(223, 239, 255);
-}
-
-#rechercheRecettes{
-    display:inline-block;
-}
-
-#rest{
-    margin-top: 50px;
+    background-color:rgb(235, 235, 235, .7);
 }
 
 .ui-widget:label{
@@ -82,6 +127,34 @@ h3{
 
 .ui-widget>input{
     margin: 20px;
+}
+
+#rechercheRecettes{
+    display:inline-block;
+}
+
+
+
+/*ce qui ne fait pas partie des recherches*/
+#rest{
+    background-color: rgb(235, 235, 235, .7);
+    min-width: auto;
+    margin-top: 50px;
+    z-index: 1;
+    padding:10px;
+}
+    
+
+#elementsTrouves{
+    padding: 10px 0px;
+    background-color: rgb(235, 235, 235, .7)
+}
+
+#elementsTrouves ul{
+    list-style: none;
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
 }
 
 input{
@@ -100,10 +173,12 @@ li{
 }
 ul{
     list-style: none;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
 }
 
-footer {
-    position:absolute;
-    bottom: 0;
-    width: 100%;
+a:hover{
+    color: lightslategray;
 }
+

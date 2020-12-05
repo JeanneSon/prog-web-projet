@@ -9,7 +9,7 @@
     	<label for = "autocomplete-2">Ingredient non-souhaité: </label>
     		<input name = "autocomplete-2" id = "autocomplete-2" value="<?php if(isset($_POST['autocomplete-2']))  echo $_POST['autocomplete-2']; ?>">
 	</div>
-		<input type="submit" name="submit" value="Valider" />
+		<input type="submit" name="submit" id="myButton" value="Valider" />
 	</fieldset>		
 </form>
 

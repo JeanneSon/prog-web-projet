@@ -14,14 +14,14 @@
 <?php
     if (isset($_SESSION["utilisateur"])) {
         ?>
-        <input type="button" name="deconnexion" value="Déconnexion" onclick="compte(this.name)"/>
-        <input type="button" name="modification" value="Modifier mes données" onclick="compte(this.name)"/>
-        <input type="button" name="suppression" value="Supprimer mon compte" onclick="compte(this.name)"/>
+        <input type="button" name="deconnexion" value="Déconnexion" id="myButton" onclick="compte(this.name)"/>
+        <input type="button" name="modification" value="Modifier mes données" id="myButton" onclick="compte(this.name)"/>
+        <input type="button" name="suppression" value="Supprimer mon compte" id="myButton" onclick="compte(this.name)"/>
         <?php
     } else{
         ?>
-        <input type="button" name="connexion" value="Login" onclick="compte(this.name)"/>
-        <input type="button" name="creation" value="Créer un compte" onclick="compte(this.name)"/>
+        <input type="button" name="connexion" value="Login" id="myButton" onclick="compte(this.name)"/>
+        <input type="button" name="creation" value="Créer un compte" id="myButton" onclick="compte(this.name)"/>
         <?php
     }
 ?>

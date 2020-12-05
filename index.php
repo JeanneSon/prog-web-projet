@@ -6,7 +6,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 ?>
 
 <!DOCTYPE html>
-<html>
+<html id="background">
 
 <head>
 	<title>Projekt Header, footer, nav</title>
@@ -69,14 +69,14 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 				<img src="icons/sac.svg" alt="coeur icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 10px; ">
 			</a>
 			<a href="?page=utilisateurOptions">
-				<img src="icons/compte_icon.png" alt="compte icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
+				<img src="icons/user.png" alt="compte icon" style="width: 40px;height: 40px; position: absolute; top: 10px; right: 60px; ">
 			</a>
 
 		</header>
 
 
 		<div>
-			<span onclick="openNav()"><img src="icons/menu.jpg" id="burger" alt="icon"></span>
+			<span onclick="openNav()"><img src="icons/menu5.png" id="burger" alt="icon"></span>
 		</div>
 		
 		<main>

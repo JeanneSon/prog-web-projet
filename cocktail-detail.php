@@ -5,7 +5,8 @@
             $recette = $Recettes[$cocktailId];
             $ingredients = explode("|", $recette["ingredients"]);
 ?>
-    <div id="rest"><h3 id="recette_titre"><?php echo $recette["titre"];?></h3>
+    <div id="rest">
+        <h3 id="recette_titre"><?php echo $recette["titre"];?></h3>
     <?php 
         $photos = scandir("Photos");
         $photo_dispo = false;
