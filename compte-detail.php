@@ -60,6 +60,6 @@
     </ul>
 </fieldset>
 <br />
-    <input type="button" name="button" value="Valider" onclick="validerCompte()"/>
+    <input type="button" name="button" value="Valider" id="myButton" onclick="validerCompte()"/>
 </form>
 </div>	

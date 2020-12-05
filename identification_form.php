@@ -16,10 +16,10 @@
 			<br />
 
 		Pas encore de compte ? Créer vous en un en cliquant ici:
-			<input type="button" name="effacer" value="Créer un compte" onclick="redirectCreationCompte()"/>
+			<input type="button" name="effacer" value="Créer un compte" id="myButton" onclick="redirectCreationCompte()"/>
 		</div>
 	</fieldset>
 	<br />
-	<input type="button" name="submit" value="Valider" onclick="valider()"/>
+	<input type="button" name="submit" value="Valider" id="myButton" onclick="valider()"/>
 		
 </form>	</div>
