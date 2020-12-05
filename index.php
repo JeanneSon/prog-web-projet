@@ -42,7 +42,6 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<a href="?page=panier">Cocktails préférés</a>
-		<a href="?page=compte-detail">Créer un compte</a>
 		<a href="?page=recherche-liste">Recherche de cocktails par une liste</a>
 		<a href="?page=recherche-saisie">Recherche des cocktails par une zone de saisie</a>
 	</div>
