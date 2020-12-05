@@ -13,5 +13,6 @@
             }
         }
     }
+    //supprime les doublons
     $simple = array_unique($all);
 ?>

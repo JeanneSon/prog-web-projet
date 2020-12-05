@@ -2,6 +2,7 @@
     <h3>Recherche de cocktails par une liste</h3>
     <?php 
     include_once("getIngredients.php");
+    //génération du fils d'ariane
     $fil = ['Aliment'];
     if (isset($_GET["ariane"])) {
         $fil = explode("*", $_GET["ariane"]);
@@ -29,7 +30,7 @@
     <?php
     include_once("getIngredients.php");
     $recettesCorrespondants = recettesCorrespondants(end($fil));
-    //echo sizeof($recettesCorrespondants);
+    //affichage des recettes de cocktails sous fore de lien cliquable
     echo '<ul>';
     foreach($recettesCorrespondants as $index) {
         echo '<li><a href="?page=cocktail-detail&cocktailId='.$index.'"">'.$Recettes[$index]["titre"].'</a></li>';
