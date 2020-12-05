@@ -25,7 +25,7 @@
     }
     ?>
 </div>
-<div id="elementsTrouves">
+<div id="elementsTrouves" style="list-style: none; columns: 2;-webkit-columns: 2;-moz-columns: 2;">
     <?php
     include_once("getIngredients.php");
     $recettesCorrespondants = recettesCorrespondants(end($fil));
