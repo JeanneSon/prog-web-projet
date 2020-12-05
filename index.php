@@ -61,7 +61,7 @@ $utilisateurs = json_decode(file_get_contents("DonneesUtilisateurs.json"), true)
 			?>
 			</h2>
 			<p id="rest">Ce site vous aidera à trouver vos cocktails préférés !<br />
-			Pour la recherche, vous pouvez utiliser soit une liste hierarchique, soit des zoses de saisie! <br />
+			Pour la recherche, vous pouvez utiliser soit une liste hierarchique, soit des zones de saisie! <br />
 			Vous trouverez les deux dans le menu à gauche.<br /><br />
 			Amusez-vous bien!</p>
 			<!-- Icons en haut à droite -->
