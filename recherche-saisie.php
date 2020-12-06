@@ -74,13 +74,39 @@
     	   $allRecettes = recettesCorrespondants('Aliment');
     	   $recettesNonCorrespondantes = recettesCorrespondants($nonIngredient);
     	   $recettefinales = array_diff($allRecettes, $recettesNonCorrespondantes);
+           if ( (isset($_POST['autocomplete-3'])) && ((trim($_POST['autocomplete-3'])) != "") ){
+                $supIngredient = trim($_POST['autocomplete-3']);
+                //vérifie que $supIngredient est un element de la liste
+                if (rechercheIngredient($supIngredient)) {
+                    $recettesCorrespondantsSup = recettesCorrespondants($supIngredient);
+                    //creation d'une liste à partir de ce qui est dans $recettefinales et $recettesCorrespondantsSup
+                    $recettefinales = array_intersect($recettefinales, $recettesCorrespondantsSup);
+                } else {
+                    //l'ingredient saisie pour $supIngredient n'existe pas
+                    $mauvaisIngredient = true;
+                    echo $supIngredient." n'est pas un ingrédient valide. Veuillez en selectionner un nouveau. <br>";
+                }
+            }
         } else {
             $mauvaisIngredient = true;
             echo $nonIngredient." n'est pas un ingrédient valide. Veuillez en selectionner un nouveau.";
         }
     }
+    //vérifie si qqch est entrer dans autocomplete-3 mais pas autocomplete-1 ni dans 2
+    else if ( (isset($_POST['autocomplete-3'])) && ((trim($_POST['autocomplete-3'])) != "") ){
+        $supIngredient = trim($_POST['autocomplete-3']);
+        //vérifie que $supIngredient est un element de la liste
+        if (rechercheIngredient($supIngredient)) {
+            $recettesCorrespondantsSup = recettesCorrespondants($supIngredient);
+            $recettefinales = $recettesCorrespondantsSup;
+        } else {
+            //l'ingredient saisie pour $supIngredient n'existe pas
+            $mauvaisIngredient = true;
+            echo $supIngredient." n'est pas un ingrédient valide. Veuillez en selectionner un nouveau. <br>";
+        }
+    }
     //si il existe des recettes correspondantes aux différents critères
-    if (!empty($recettefinales)) {
+    if ( (!empty($recettefinales)) && ($mauvaisIngredient == false) ){
     	echo 'Voici les recettes que nous vous proposons: <br>';
     	foreach($recettefinales as $index) {
         	echo '<li><a href="?page=cocktail-detail&cocktailId='.$index.'"">'.$Recettes[$index]["titre"].'</a></li>';
